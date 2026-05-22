@@ -1,23 +1,25 @@
 # Stream Setup Checklist
 
-Use this checklist to assemble the first on-stream version of AI Buddy.
+Use this checklist to assemble the first on-stream version of Zora.
 
 ## Hardware and audio
 
 - [ ] Dedicated microphone input selected for the streamer.
-- [ ] Optional virtual audio cable for routing buddy TTS separately.
+- [ ] Optional virtual audio cable for routing Zora TTS separately.
 - [ ] Headphones or monitoring set up to avoid feedback.
-- [ ] Buddy audio source has its own OBS volume slider.
+- [ ] Zora audio source has its own OBS volume slider.
 - [ ] Emergency mute hotkey configured in OBS or the local controller.
+- [ ] Visible indicator for whether background listening is active or paused.
 
 ## Avatar application
 
 Recommended first target: Warudo.
 
-- [ ] Import or select a small 3D avatar.
+- [ ] Import or select a small 3D avatar for Zora.
 - [ ] Build an idle pose suitable for the top-right corner.
-- [ ] Configure lip sync from the buddy TTS audio source.
+- [ ] Configure lip sync from the Zora TTS audio source.
 - [ ] Add expression triggers for idle, listening, thinking, and speaking.
+- [ ] Add a subtle listening indicator for wake phrase/background context mode.
 - [ ] Test transparent capture or chroma-key capture into OBS.
 
 Alternatives:
@@ -28,40 +30,46 @@ Alternatives:
 
 ## OBS scene layout
 
-- [ ] Create a scene group or nested scene named `AI Buddy`.
+- [ ] Create a scene group or nested scene named `Zora`.
 - [ ] Add the avatar capture source.
 - [ ] Position the avatar in the top-right corner.
-- [ ] Add a dedicated buddy audio source.
-- [ ] Add an optional caption source for the buddy's spoken reply.
-- [ ] Create a hotkey to hide/show the entire buddy scene.
+- [ ] Add a dedicated Zora audio source.
+- [ ] Add an optional caption source for Zora's spoken reply.
+- [ ] Create a hotkey to hide/show the entire Zora scene.
+- [ ] Create a hotkey to mute/pause Zora's background listener.
 
 ## Local controller
 
-- [ ] Add a push-to-talk or wake phrase trigger.
-- [ ] Confirm the controller records only while triggered.
-- [ ] Print transcripts locally for debugging.
+- [ ] Add the wake phrase `hey Zora`.
+- [ ] Add push-to-talk as a backup for noisy stream moments.
+- [ ] Keep a short rolling transcript or summary of recent streamer context.
+- [ ] Confirm Zora does not answer until the wake phrase or manual trigger fires.
+- [ ] Print active questions and responses locally for debugging.
 - [ ] Send short responses to TTS.
 - [ ] Trigger avatar state changes:
-  - `listening` when recording starts.
+  - `listening` while background context is active or the wake phrase is heard.
   - `thinking` while waiting for the AI response.
   - `speaking` while TTS plays.
   - `idle` after playback ends.
+  - `muted` when background listening is paused.
 
 ## Stream safety checks
 
-- [ ] Buddy can be muted instantly.
-- [ ] Buddy does not answer without the trigger.
-- [ ] Buddy does not claim access to desktop, game, chat, or private data unless
+- [ ] Zora can be muted instantly.
+- [ ] Zora does not answer without "hey Zora" or a manual trigger.
+- [ ] Zora does not repeat background rant context unless asked.
+- [ ] Zora does not claim access to desktop, game, chat, or private data unless
       those inputs have been intentionally connected.
 - [ ] TTS volume is balanced against game, music, and streamer microphone.
 - [ ] Test a few common questions before going live.
 
 ## First live test script
 
-Try these before using the buddy in a real broadcast:
+Try these before using Zora in a real broadcast:
 
-1. "Hey buddy, introduce yourself in one sentence."
-2. "What is one interesting fact about the moon?"
-3. "Give me a short answer: why is the sky blue?"
-4. "Stop talking."
-5. Mute and unmute the buddy from OBS or the controller.
+1. "Hey Zora, introduce yourself in one sentence."
+2. Rant for thirty seconds, then ask: "Hey Zora, what do you think about that?"
+3. "Hey Zora, does this option or that option make more sense?"
+4. "Hey Zora, give me the quick version of what I was just ranting about."
+5. "Stop talking."
+6. Mute and unmute Zora from OBS or the controller.
