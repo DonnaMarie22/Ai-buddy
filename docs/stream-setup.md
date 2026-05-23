@@ -17,11 +17,20 @@ Use this checklist to assemble the first on-stream version of Zora.
       enabled.
 - [ ] Google Drive destination folder selected for approved script uploads.
 
-## Avatar application
+## Zora background app
+
+Zora should run as her own local background app or service. It owns listening,
+transcripts, memory, web lookup, script generation, Drive export, and the state
+commands sent to Warudo.
+
+The app should be able to start before Warudo and continue post-stream work after
+Warudo or OBS closes.
+
+## Avatar face rig
 
 Chosen target: Warudo.
 
-- [ ] Import or select a small 3D avatar for Zora.
+- [ ] Import or select a small 3D avatar/face rig for Zora.
 - [ ] Build an idle pose suitable for the top-right corner.
 - [ ] Configure lip sync from the Zora TTS audio source.
 - [ ] Add expression triggers for idle, listening, resting, thinking, and speaking.
@@ -31,11 +40,8 @@ Chosen target: Warudo.
 - [ ] Add an awaken transition for the "Zora awaken" command.
 - [ ] Test transparent capture or chroma-key capture into OBS.
 
-Alternatives:
-
-- VSeeFace for a lightweight VRM avatar workflow.
-- Animaze for a FaceRig-like workflow.
-- FaceRig only if an existing setup already depends on it.
+Warudo is the committed choice for the MVP. Other avatar tools are out of scope
+unless the project later needs a separate compatibility layer.
 
 ## OBS scene layout
 
@@ -46,9 +52,12 @@ Alternatives:
 - [ ] Add an optional caption source for Zora's spoken reply.
 - [ ] Create a hotkey to hide/show the entire Zora scene.
 - [ ] Create a hotkey to mute/pause Zora's background listener.
-- [ ] Connect OBS streaming status to the local controller if available.
+- [ ] Connect OBS streaming status to the Zora background app if available.
 
 ## Local controller
+
+The local controller lives inside the Zora background app and sends avatar state
+updates to Warudo.
 
 - [ ] Add the wake phrase `hey Zora`.
 - [ ] Add the pause command `Zora rest`.

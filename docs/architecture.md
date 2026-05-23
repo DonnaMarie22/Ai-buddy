@@ -1,12 +1,19 @@
 # Zora Architecture
 
-This document describes the first practical architecture for Zora, a streaming AI
-buddy that can follow the streamer's recent rant and respond only when addressed.
-It favors clear local control, low stream risk, and replaceable services.
+This document describes the first practical architecture for Zora, a standalone
+background app that can follow the streamer's recent rant and respond only when
+addressed. Warudo is the face/avatar rig Zora drives for visual presence; it is
+not the application brain. The architecture favors clear local control, low
+stream risk, and replaceable services.
 
 ## High-level flow
 
 ```text
+Zora background app
+  -> owns listening, memory, research, scripts, Drive export, and state
+  -> drives Warudo as the visible face/avatar rig
+  -> exposes audio and visual sources to OBS
+
 Streamer mic
   -> control phrase detector
   -> local background listener
@@ -20,7 +27,7 @@ Streamer mic
   -> safety/pacing filter
   -> text-to-speech
   -> OBS audio source
-  -> avatar app expression and mouth movement
+  -> Warudo expression and mouth movement
 
 Post-stream transcript
   -> archive lookup
@@ -32,6 +39,17 @@ Post-stream transcript
   -> Google Drive export
   -> draft titles, descriptions, chapters, and clip notes
 ```
+
+## Application boundary
+
+Zora should be built as her own local background app or service. Warudo should be
+treated as the visual layer: Zora sends state changes, expression triggers, and
+TTS audio to Warudo, while Zora itself owns listening, wake/control commands,
+transcripts, memory, web lookup, script generation, and Google Drive export.
+
+This separation matters because Zora should still be able to log transcripts,
+prepare scripts, search archives, or upload approved documents even when the
+Warudo scene is not currently visible.
 
 ## Components
 
@@ -142,7 +160,8 @@ Lookup behavior:
 
 ### 6. Conversation controller
 
-The controller owns Zora's state, memory window, and prompt sent to the LLM.
+The controller is the core of the Zora background app. It owns Zora's state,
+memory window, and prompt sent to the LLM.
 
 Recommended responsibilities:
 
@@ -236,15 +255,17 @@ Minimum states:
 | `speaking` | Talk animation and lip sync from TTS audio. |
 | `muted` | Silent pose for hard mute or emergency stop. |
 
-Warudo is the chosen avatar target because it can combine a 3D avatar, props,
-scene layout, and triggers in a streamer-friendly workflow. The bridge should map
-Zora's state changes to Warudo triggers, including a distinct resting pose for
-"Zora rest" and an awake/listening transition for "Zora awaken".
+Warudo is the chosen face/avatar rig because it can combine a 3D avatar, props,
+scene layout, and triggers in a streamer-friendly workflow. The Zora background
+app remains the brain; Warudo is the face. The bridge should map Zora's state
+changes to Warudo triggers, including a distinct resting pose for "Zora rest" and
+an awake/listening transition for "Zora awaken".
 
 ### 12. OBS integration
 
-OBS composes the final stream. Zora should be aware of whether OBS is currently
-streaming so her visual state can communicate what is happening.
+OBS composes the final stream. Zora's background app should be aware of whether
+OBS is currently streaming so her Warudo visual state can communicate what is
+happening.
 
 Recommended sources:
 

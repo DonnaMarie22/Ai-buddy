@@ -1,8 +1,8 @@
 # Zora AI Buddy
 
-Zora is a streaming companion concept for a small 3D character that sits on
-stream, listens while you talk, and answers questions as an in-world computer
-sidekick.
+Zora is a standalone background app that powers a small 3D character on
+stream. The app listens while you talk, answers questions as an in-world computer
+sidekick, and uses Warudo as her visible face/avatar rig.
 
 The goal is not to replace the streamer. Zora should feel like a responsive
 co-host in the corner of the screen: useful for quick questions, playful enough
@@ -10,7 +10,8 @@ to have personality, and quiet enough that she does not talk over the show.
 
 ## Core experience
 
-- A small 3D avatar appears in the top-right of the stream layout.
+- Zora runs as her own background app on the streaming PC.
+- A small Warudo-powered 3D avatar appears in the top-right of the stream layout.
 - Zora listens in the background so she can understand the recent rant or topic.
 - The streamer can ask natural voice questions during a broadcast with "hey
   Zora".
@@ -64,12 +65,13 @@ to have personality, and quiet enough that she does not talk over the show.
 
 | Layer | Recommended first choice | Notes |
 | --- | --- | --- |
-| Avatar app | Warudo | Chosen platform for Zora's 3D avatar, scene workflow, and expression triggers. |
-| Capture/compositing | OBS | Add the avatar as a transparent/window/game capture source. |
+| Zora background app | Local desktop app/service | Owns listening, wake phrases, memory, web research, scripts, Drive export, and state. |
+| Face/avatar rig | Warudo | Chosen platform for Zora's visible 3D face, scene workflow, and expression triggers. |
+| Capture/compositing | OBS | Captures the Warudo avatar and Zora audio as stream sources. |
 | Speech-to-text | Whisper or a hosted STT API | Start hosted for simplicity; move local later if latency is good. |
 | AI response | Hosted LLM API | Keep answers concise for stream pacing and clear about belief, tradition, theory, evidence, and sources. |
 | Text-to-speech | ElevenLabs, Azure, or local TTS | Pick a voice that is distinct from the streamer. |
-| Orchestration | Small local Python or Node service | Owns wake phrase detection, prompts, context, state, avatar triggers, and post-stream jobs. |
+| Orchestration | Small local Python or Node service inside the Zora app | Coordinates wake phrase detection, prompts, context, state, Warudo triggers, and post-stream jobs. |
 | Storage | Local files or SQLite | Stores timestamped transcripts, summaries, highlights, script drafts, and compact memory notes. |
 | Web research | Search/browser API | Looks up current facts, sources, and references when Zora needs internet context. |
 | Cloud export | Google Drive API | Uploads reviewed scripts and content packages to a creator-owned Drive folder. |
