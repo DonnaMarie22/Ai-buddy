@@ -38,18 +38,20 @@ Warudo or OBS closes.
 
 Chosen target: Warudo.
 
-- [ ] Import or select a small 3D avatar/face rig for Zora.
-- [ ] Build an idle pose suitable for the top-right corner.
+- [ ] Import or select a small 3D fairy avatar/face rig for Zora.
+- [ ] Build a hovering fairy idle pose suitable for the top-right corner.
 - [ ] Configure lip sync from the Zora TTS audio source.
 - [ ] Add expression triggers for idle, listening, resting, thinking, and speaking.
-- [ ] Add a subtle listening indicator for wake phrase/background context mode.
+- [ ] Add a subtle fairy glow/listening indicator for wake phrase/background
+      context mode.
 - [ ] Add a resting/sleeping expression for the "Zora rest" command.
 - [ ] Add a sleeping loop that plays when OBS is streaming and Zora is asleep.
 - [ ] Add an awaken transition for the "Zora awaken" command.
 - [ ] Test transparent capture or chroma-key capture into OBS.
 
-Warudo is the committed choice for the MVP. Other avatar tools are out of scope
-unless the project later needs a separate compatibility layer.
+Warudo is the committed choice for the MVP. Zora's Warudo model should read as
+a helpful fairy rather than a generic assistant. Other avatar tools are out of
+scope unless the project later needs a separate compatibility layer.
 
 ## OBS scene layout
 

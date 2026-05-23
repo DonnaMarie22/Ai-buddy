@@ -2,7 +2,7 @@
 
 Zora should be a downloadable app for the creator's computer, not just a script
 or collection of prompts. The app is the brain that runs in the background while
-Warudo provides Zora's visible face on stream.
+Warudo provides Zora's visible helpful fairy face on stream.
 
 ## Platform target
 
@@ -28,7 +28,8 @@ The Zora desktop app owns:
 - Google Drive export for reviewed documents.
 - Local notes, settings, logs, and archives.
 
-Warudo owns the 3D avatar presentation. OBS owns the final stream layout.
+Warudo owns the 3D helpful fairy avatar presentation. OBS owns the final stream
+layout.
 
 ## Installer and first-run setup
 
@@ -258,6 +259,7 @@ Settings should include:
 - Answer length: short, normal, detailed.
 - Speaking frequency: quiet, balanced, active.
 - Playfulness: low, medium, high.
+- Fairy sparkle: subtle, balanced, whimsical.
 - Challenge level: supportive, balanced, pushback.
 - Spiritual/scientific framing balance.
 - Quantum/speculative-topic caution level.

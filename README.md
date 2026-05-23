@@ -1,19 +1,21 @@
 # Zora AI Buddy
 
 Zora is a downloadable desktop app that runs in the background on your
-computer and powers a small 3D character on stream. The app listens while you
+computer and powers a small helpful fairy on stream. The app listens while you
 talk, answers questions as an in-world computer sidekick, and uses Warudo as her
-visible face/avatar rig.
+visible fairy face/avatar rig.
 
 The goal is not to replace the streamer. Zora should feel like a responsive
-co-host in the corner of the screen: useful for quick questions, playful enough
-to have personality, and quiet enough that she does not talk over the show.
+helpful fairy in the corner of the screen: useful for quick questions, playful
+enough to have personality, and quiet enough that she does not talk over the
+show.
 
 ## Core experience
 
 - Zora installs as her own desktop app on the streaming PC.
 - Zora can run in the background or system tray while streaming.
-- A small Warudo-powered 3D avatar appears in the top-right of the stream layout.
+- A small Warudo-powered 3D fairy avatar appears in the top-right of the stream
+  layout.
 - Zora listens in the background so she can understand the recent rant or topic.
 - The streamer can ask natural voice questions during a broadcast with "hey
   Zora".
@@ -73,7 +75,7 @@ to have personality, and quiet enough that she does not talk over the show.
 | Layer | Recommended first choice | Notes |
 | --- | --- | --- |
 | Zora desktop app | Downloadable Windows-first desktop app | Owns listening, wake phrases, memory, web research, scripts, Drive export, and state. |
-| Face/avatar rig | Warudo | Chosen platform for Zora's visible 3D face, scene workflow, and expression triggers. |
+| Face/avatar rig | Warudo | Chosen platform for Zora's visible 3D fairy face, scene workflow, and expression triggers. |
 | Capture/compositing | OBS | Captures the Warudo avatar and Zora audio as stream sources. |
 | Speech-to-text | Whisper or a hosted STT API | Start hosted for simplicity; move local later if latency is good. |
 | AI response | Hosted LLM API | Keep answers concise for stream pacing and clear about belief, tradition, theory, evidence, and sources. |
@@ -98,6 +100,8 @@ to have personality, and quiet enough that she does not talk over the show.
 ## Stream behavior principles
 
 - Keep answers brief unless the streamer asks for detail.
+- Express Zora as a helpful fairy: bright, curious, lightly magical, and kind
+  without becoming childish or distracting.
 - Never interrupt unless explicitly invited by "hey Zora", a hotkey, or a
   command.
 - Treat "Zora rest" as an immediate pause for listening/logging and "Zora

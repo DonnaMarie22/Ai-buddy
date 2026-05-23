@@ -2,8 +2,8 @@
 
 This document describes the first practical architecture for Zora, a
 downloadable standalone desktop app that can run in the background, follow the
-streamer's recent rant, and respond only when addressed. Warudo is the face/avatar rig Zora drives for visual presence; it is
-not the application brain. The architecture favors clear local control, low
+streamer's recent rant, and respond only when addressed. Warudo is the fairy face/avatar rig Zora drives for visual presence;
+it is not the application brain. The architecture favors clear local control, low
 stream risk, and replaceable services.
 
 ## High-level flow
@@ -12,7 +12,7 @@ stream risk, and replaceable services.
 Zora downloadable desktop app
   -> installs on the streaming PC
   -> owns listening, memory, research, scripts, Drive export, and state
-  -> drives Warudo as the visible face/avatar rig
+  -> drives Warudo as the visible helpful fairy face/avatar rig
   -> exposes audio and visual sources to OBS
 
 Streamer mic
@@ -274,8 +274,8 @@ Minimum states:
 | `speaking` | Talk animation and lip sync from TTS audio. |
 | `muted` | Silent pose for hard mute or emergency stop. |
 
-Warudo is the chosen face/avatar rig because it can combine a 3D avatar, props,
-scene layout, and triggers in a streamer-friendly workflow. The Zora background
+Warudo is the chosen fairy face/avatar rig because it can combine a 3D avatar,
+props, scene layout, and triggers in a streamer-friendly workflow. The Zora background
 app remains the brain; Warudo is the face. The bridge should map Zora's state
 changes to Warudo triggers, including a distinct resting pose for "Zora rest" and
 an awake/listening transition for "Zora awaken".

@@ -38,7 +38,7 @@ Status indicators should show:
 - Zora state: idle, listening, resting, sleeping, thinking, speaking, muted, or
   panic.
 - OBS status: disconnected, connected, streaming, not streaming.
-- Warudo status: disconnected, connected, current expression/state.
+- Warudo status: disconnected, connected, current fairy expression/state.
 - Session status: not logging, logging, paused, recovering, processing.
 - Drive status: disabled, authorized, uploading, uploaded, error.
 - Web research status: disabled, enabled, lookup in progress, source saved.
@@ -168,7 +168,7 @@ External dependencies should be replaceable.
 Initial integrations:
 
 - OBS WebSocket for streaming status and optional scene controls.
-- Warudo bridge for expressions and avatar state.
+- Warudo bridge for fairy expressions and avatar state.
 - STT provider for transcription.
 - LLM provider for response generation and post-stream processing.
 - TTS provider for Zora's voice.
@@ -193,6 +193,7 @@ Controls:
 - Answer length.
 - Speaking frequency.
 - Playfulness.
+- Fairy sparkle level.
 - Support versus pushback.
 - Follow-up question frequency.
 - Spiritual/scientific framing balance.
