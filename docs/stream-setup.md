@@ -10,6 +10,8 @@ Use this checklist to assemble the first on-stream version of Zora.
 - [ ] Zora audio source has its own OBS volume slider.
 - [ ] Emergency mute hotkey configured in OBS or the local controller.
 - [ ] Visible indicator for whether background listening is active or paused.
+- [ ] Enough local disk space for timestamped transcript logs.
+- [ ] Clear naming convention for each stream session.
 
 ## Avatar application
 
@@ -43,6 +45,7 @@ Alternatives:
 - [ ] Add the wake phrase `hey Zora`.
 - [ ] Add push-to-talk as a backup for noisy stream moments.
 - [ ] Keep a short rolling transcript or summary of recent streamer context.
+- [ ] Save a timestamped full-stream transcript for post-stream review.
 - [ ] Confirm Zora does not answer until the wake phrase or manual trigger fires.
 - [ ] Print active questions and responses locally for debugging.
 - [ ] Send short responses to TTS.
@@ -58,6 +61,7 @@ Alternatives:
 - [ ] Zora can be muted instantly.
 - [ ] Zora does not answer without "hey Zora" or a manual trigger.
 - [ ] Zora does not repeat background rant context unless asked.
+- [ ] Full-stream logs can be paused, exported, or deleted.
 - [ ] Zora does not claim access to desktop, game, chat, or private data unless
       those inputs have been intentionally connected.
 - [ ] TTS volume is balanced against game, music, and streamer microphone.
@@ -73,3 +77,16 @@ Try these before using Zora in a real broadcast:
 4. "Hey Zora, give me the quick version of what I was just ranting about."
 5. "Stop talking."
 6. Mute and unmute Zora from OBS or the controller.
+
+
+## Post-stream content checklist
+
+After the broadcast ends:
+
+- [ ] Close the stream session so the transcript has an end time.
+- [ ] Generate a session outline with major topics and timestamps.
+- [ ] Extract the best talking points and quotable moments.
+- [ ] Group related moments into YouTube video ideas.
+- [ ] Draft scripts for the strongest ideas.
+- [ ] Review every script manually before publishing.
+- [ ] Delete or archive raw transcripts according to the creator's preference.

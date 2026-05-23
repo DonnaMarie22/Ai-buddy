@@ -9,6 +9,7 @@ It favors clear local control, low stream risk, and replaceable services.
 ```text
 Streamer mic
   -> local background listener
+  -> timestamped stream transcript
   -> rolling transcript/context summary
   -> "hey Zora" wake phrase gate
   -> speech-to-text for the active question
@@ -18,6 +19,13 @@ Streamer mic
   -> text-to-speech
   -> OBS audio source
   -> avatar app expression and mouth movement
+
+Post-stream transcript
+  -> segmenter
+  -> talking point extractor
+  -> highlight scorer
+  -> YouTube script generator
+  -> draft titles, descriptions, chapters, and clip notes
 ```
 
 ## Components
@@ -31,7 +39,8 @@ short local memory, not as an always-publishing transcript.
 Recommended MVP behavior:
 
 - Continuously capture microphone audio locally.
-- Build a rolling transcript or summary of the last few minutes.
+- Build a rolling transcript or summary of the last few minutes for live answers.
+- Save a timestamped full-stream transcript for post-stream content creation.
 - Keep the rolling context private by default.
 - Do not speak until the wake phrase is detected.
 - Provide an obvious mute/pause control for live-stream safety.
@@ -71,7 +80,25 @@ Implementation notes:
 - Display the active transcript in the local console for debugging.
 - Make it clear when background listening is paused.
 
-### 4. Conversation controller
+### 4. Stream transcript store
+
+The transcript store records a full 3-4 hour stream so Zora can help turn the
+conversation into content after the broadcast.
+
+Recommended data model:
+
+- `session_id`: one stream or recording session.
+- `started_at` and `ended_at`: stream boundaries.
+- `segments`: timestamped transcript chunks with speaker labels when available.
+- `live_context_summary`: short rolling summary used for live Zora responses.
+- `post_stream_summary`: longer outline generated after the session.
+- `highlights`: selected moments with timestamps, reasons, and suggested formats.
+- `scripts`: generated YouTube script drafts linked back to source segments.
+
+Storage can start as local JSONL or SQLite. Avoid keeping raw audio by default
+unless the creator explicitly enables it.
+
+### 5. Conversation controller
 
 The controller owns Zora's state, memory window, and prompt sent to the LLM.
 
@@ -84,7 +111,7 @@ Recommended responsibilities:
 - Track current state: `idle`, `listening`, `thinking`, `speaking`, `muted`.
 - Reject new requests while speaking unless interruption is enabled.
 
-### 5. LLM response
+### 6. LLM response
 
 The LLM should answer in Zora's voice while using only the information available
 to it.
@@ -101,7 +128,7 @@ Response constraints:
 - Do not claim to see the game, desktop, or chat unless those integrations are
   explicitly enabled.
 
-### 6. Safety and pacing filter
+### 7. Safety and pacing filter
 
 Before speech output, apply a small final pass to protect the live stream.
 
@@ -114,7 +141,7 @@ The MVP filter can:
 - Convert links into "I found a link, but I will not read the full URL on
   stream."
 
-### 7. Text-to-speech
+### 8. Text-to-speech
 
 TTS produces Zora's spoken response. Choose a voice that is clearly not the
 streamer's voice so viewers understand who is talking.
@@ -126,7 +153,7 @@ Operational needs:
 - Optional audio ducking so Zora does not overpower the stream.
 - A local mute switch.
 
-### 8. Avatar bridge
+### 9. Avatar bridge
 
 The bridge maps Zora state to the avatar application.
 
@@ -145,7 +172,7 @@ scene layout, and triggers in a streamer-friendly workflow. VSeeFace, Animaze,
 or legacy FaceRig can also work if the bridge only needs to provide audio for lip
 sync and a few hotkey/expression triggers.
 
-### 9. OBS integration
+### 10. OBS integration
 
 OBS composes the final stream.
 
@@ -156,6 +183,22 @@ Recommended sources:
 - Optional caption/subtitle browser source for Zora's response.
 
 Keep Zora in a separate OBS scene group so she can be hidden instantly.
+
+### 11. Post-stream content pipeline
+
+After a stream ends, Zora can run a batch job over the full transcript.
+
+Pipeline stages:
+
+1. Segment the transcript into coherent topics.
+2. Score segments for clarity, energy, usefulness, novelty, and clip potential.
+3. Extract the strongest talking points with timestamps and supporting quotes.
+4. Group related moments into video ideas.
+5. Draft YouTube scripts with hooks, beats, clip notes, and calls to action.
+6. Produce optional Shorts/TikTok prompts from the highest-energy moments.
+
+This mode should not talk live on stream. It can run after the broadcast and
+write drafts into local markdown files for review.
 
 ## First prototype contract
 
