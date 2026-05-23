@@ -12,6 +12,29 @@ helpful fairy in the corner of the screen: useful for quick questions, playful
 enough to have personality, and quiet enough that she does not talk over the
 show.
 
+
+## Running the MVP desktop shell
+
+The first implementation step is now a minimal Electron desktop hub for Zora. It
+provides the dark blue/pinky-purple control tower UI, memory bank folder
+selection, visible logging state, provider settings, status diagnostics, and
+placeholder Warudo/OBS readiness warnings.
+
+```bash
+npm install
+npm start
+```
+
+Run validation without opening the app:
+
+```bash
+npm run check
+```
+
+This shell does not yet capture microphone audio, connect to OBS/Warudo, call AI
+providers, or play TTS. Those integrations plug into the provider and status
+areas next.
+
 ## Core experience
 
 - Zora installs as her own desktop app on the streaming PC.

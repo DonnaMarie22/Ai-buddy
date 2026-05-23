@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zora Desktop Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-mark">Z</div>
+        <p class="eyebrow">Practical fairy control tower</p>
+        <h1>Zora Hub</h1>
+        <p class="lede">Dark blue and pinky-purple controls for Zora's memory, stream state, providers, and Warudo/OBS readiness.</p>
+        <nav class="nav-list" aria-label="Hub sections">
+          <a href="#status">Status</a>
+          <a href="#memory">Memory bank</a>
+          <a href="#providers">Providers</a>
+          <a href="#controls">Controls</a>
+          <a href="#errors">Errors</a>
+        </nav>
+      </aside>
+
+      <main class="hub">
+        <section class="hero panel">
+          <div>
+            <p class="eyebrow">Usually studying in the tower</p>
+            <h2>Zora is standing by.</h2>
+            <p>Choose her memory bank, confirm stream integrations, and keep the logging state visible before going live.</p>
+          </div>
+          <div class="zora-orb" aria-hidden="true">
+            <span class="sparkle sparkle-one"></span>
+            <span class="sparkle sparkle-two"></span>
+            <span class="sparkle sparkle-three"></span>
+          </div>
+        </section>
+
+        <section id="status" class="grid two-column">
+          <article class="panel state-panel">
+            <div class="panel-heading">
+              <p class="eyebrow">Live state</p>
+              <h3>Zora</h3>
+            </div>
+            <div class="state-readout">
+              <span id="zora-state" class="state-pill">Resting</span>
+              <span id="logging-state" class="state-pill secondary">Logging idle</span>
+            </div>
+            <p id="critical-warning" class="critical-warning hidden">Hey listen, we have a problem somewhere. Pause the stream.</p>
+            <div class="button-row">
+              <button data-zora-state="listening">Awaken</button>
+              <button data-zora-state="resting">Rest</button>
+              <button data-zora-state="muted">Mute</button>
+              <button data-zora-state="panic" class="danger">Panic</button>
+            </div>
+          </article>
+
+          <article class="panel" id="memory">
+            <div class="panel-heading">
+              <p class="eyebrow">Protected drive</p>
+              <h3>Memory bank</h3>
+            </div>
+            <p id="memory-bank-path" class="path-display">No memory bank selected yet.</p>
+            <div class="button-row">
+              <button id="choose-memory-bank">Choose drive/folder</button>
+              <button id="open-memory-bank" class="secondary-button">Open</button>
+            </div>
+            <p class="hint">Zora stores lightweight transcripts, notes, downloaded stream videos, archives, source notes, and Make packages here.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="status-grid-panel">
+          <div class="panel-heading inline-heading">
+            <div>
+              <p class="eyebrow">Warnings and readiness</p>
+              <h3>Status dashboard</h3>
+            </div>
+            <button id="refresh-diagnostics" class="secondary-button">Refresh checks</button>
+          </div>
+          <div id="status-grid" class="status-grid"></div>
+        </section>
+
+        <section id="providers" class="panel">
+          <div class="panel-heading">
+            <p class="eyebrow">Swappable services</p>
+            <h3>Provider settings</h3>
+          </div>
+          <p class="hint">Provider settings tell Zora which services are allowed for STT, LLM, TTS, web research, Drive, Make, OBS, and Warudo. Secrets belong in an OS credential vault or encrypted vault later, not in plain text.</p>
+          <div id="provider-list" class="provider-list"></div>
+          <div class="button-row">
+            <button id="save-providers">Save provider settings</button>
+          </div>
+        </section>
+
+        <section id="controls" class="grid two-column">
+          <article class="panel">
+            <div class="panel-heading">
+              <p class="eyebrow">Session logging</p>
+              <h3>Stream log controls</h3>
+            </div>
+            <p id="session-label" class="path-display">No active session.</p>
+            <div class="button-row wrap">
+              <button id="start-session">Start session log</button>
+              <button data-logging-state="paused" class="secondary-button">Pause logging</button>
+              <button data-logging-state="logging" class="secondary-button">Resume logging</button>
+              <button data-logging-state="closed" class="secondary-button">Close session</button>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <p class="eyebrow">Next build hooks</p>
+              <h3>Warudo triggers</h3>
+            </div>
+            <ul class="trigger-list">
+              <li>Idle/present</li>
+              <li>Hover/subtle float</li>
+              <li>Listening</li>
+              <li>Thinking/studying</li>
+              <li>Speaking</li>
+              <li>Sleeping/resting</li>
+              <li>Awake transition</li>
+              <li>Muted and panic</li>
+              <li>OBS-live sleeping loop</li>
+            </ul>
+          </article>
+        </section>
+
+        <section id="errors" class="panel">
+          <div class="panel-heading">
+            <p class="eyebrow">Desktop hub alerts</p>
+            <h3>Error log</h3>
+          </div>
+          <div id="error-log" class="error-log"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
