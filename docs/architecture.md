@@ -15,6 +15,7 @@ Streamer mic
   -> "hey Zora" wake phrase gate
   -> speech-to-text for the active question
   -> conversation controller
+  -> optional web research tool
   -> LLM response
   -> safety/pacing filter
   -> text-to-speech
@@ -153,7 +154,30 @@ Recommended responsibilities:
   `muted`.
 - Reject new requests while speaking unless interruption is enabled.
 
-### 7. LLM response
+### 7. Web research tool
+
+Zora should be able to look things up on the internet when the streamer asks for
+current information, source checks, definitions, recent events, or deeper
+research. Web lookup should be a tool the controller can call, not a replacement
+for Zora's own response style.
+
+Use web research when:
+
+- A question depends on current information.
+- Zora needs a source, date, quote, or reference.
+- The streamer asks her to look something up.
+- A quantum science, history, religion, health, or public-claim topic needs
+  careful verification.
+
+Response rules:
+
+- Summarize sources in stream-friendly language.
+- Mention when information comes from a quick lookup.
+- Prefer reputable sources for science and history.
+- Do not read long URLs aloud unless asked.
+- Say when sources disagree or when a claim is speculative.
+
+### 8. LLM response
 
 The LLM should answer in Zora's voice while using only the information available
 to it.
@@ -167,10 +191,12 @@ Response constraints:
   recommendation when possible.
 - Say when information is uncertain.
 - Avoid long lists unless asked.
-- Do not claim to see the game, desktop, or chat unless those integrations are
-  explicitly enabled.
+- Do not claim to see the game, desktop, chat, or internet unless those
+  integrations are explicitly enabled.
+- For quantum science topics, separate established physics from philosophical or
+  spiritual interpretations.
 
-### 8. Safety and pacing filter
+### 9. Safety and pacing filter
 
 Before speech output, apply a small final pass to protect the live stream.
 
@@ -183,7 +209,7 @@ The MVP filter can:
 - Convert links into "I found a link, but I will not read the full URL on
   stream."
 
-### 9. Text-to-speech
+### 10. Text-to-speech
 
 TTS produces Zora's spoken response. Choose a voice that is clearly not the
 streamer's voice so viewers understand who is talking.
@@ -195,7 +221,7 @@ Operational needs:
 - Optional audio ducking so Zora does not overpower the stream.
 - A local mute switch.
 
-### 10. Avatar bridge
+### 11. Avatar bridge
 
 The bridge maps Zora state to the avatar application.
 
@@ -215,7 +241,7 @@ scene layout, and triggers in a streamer-friendly workflow. The bridge should ma
 Zora's state changes to Warudo triggers, including a distinct resting pose for
 "Zora rest" and an awake/listening transition for "Zora awaken".
 
-### 11. OBS integration
+### 12. OBS integration
 
 OBS composes the final stream. Zora should be aware of whether OBS is currently
 streaming so her visual state can communicate what is happening.
@@ -237,7 +263,7 @@ OBS-aware state rule:
 - A hard `muted` or emergency-stop state can still hide or silence Zora even
   during a live stream.
 
-### 12. Post-stream content pipeline
+### 13. Post-stream content pipeline
 
 After a stream ends, Zora can run a batch job over the full transcript.
 
@@ -253,7 +279,7 @@ Pipeline stages:
 This mode should not talk live on stream. It can run after the broadcast and
 write drafts into local markdown files for review.
 
-### 13. Google Drive export
+### 14. Google Drive export
 
 Google Drive export should happen after script generation and creator review.
 Zora can upload approved documents into a Drive folder such as

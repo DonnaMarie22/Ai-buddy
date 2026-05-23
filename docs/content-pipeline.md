@@ -59,8 +59,8 @@ Group the transcript into coherent topic blocks such as:
 - Funny rants.
 - Useful explanations.
 - Strong opinions.
-- Spirituality, history, religion, astrology, embodiment, awakening, and
-  human-pattern conversations.
+- Spirituality, history, religion, astrology, quantum science, embodiment,
+  awakening, and human-pattern conversations.
 - Questions from viewers.
 - Moments that could become Shorts.
 

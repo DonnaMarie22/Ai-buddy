@@ -13,6 +13,8 @@ Use this checklist to assemble the first on-stream version of Zora.
 - [ ] Enough local disk space for timestamped transcript logs.
 - [ ] Clear naming convention for each stream session.
 - [ ] Local folder for Zora notes, transcripts, and script drafts.
+- [ ] Internet lookup provider or browser/search API selected if web research is
+      enabled.
 - [ ] Google Drive destination folder selected for approved script uploads.
 
 ## Avatar application
@@ -81,8 +83,8 @@ Alternatives:
 - [ ] Google Drive uploads require review/approval before raw transcripts are
       included.
 - [ ] Long-term notes can be opened and edited manually.
-- [ ] Zora does not claim access to desktop, game, chat, or private data unless
-      those inputs have been intentionally connected.
+- [ ] Zora does not claim access to desktop, game, chat, internet, or private
+      data unless those inputs have been intentionally connected.
 - [ ] TTS volume is balanced against game, music, and streamer microphone.
 - [ ] Test a few common questions before going live.
 

@@ -29,8 +29,10 @@ to have personality, and quiet enough that she does not talk over the show.
 - Zora can look up old transcripts and keep lightweight notes so future streams
   remember important context without re-reading everything.
 - Zora is prepared to discuss spirituality, history, human beings, the body,
-  awakening theories, astrology, religion, and other subjects about human
-  patterns with curiosity and nuance.
+  awakening theories, astrology, religion, quantum sciences, and other subjects
+  about human patterns with curiosity and nuance.
+- Zora can look things up on the internet when current facts, sources, or extra
+  research are needed.
 - The avatar idles when not in use and can show simple reactions while speaking,
   listening, surprised, or thinking.
 
@@ -53,7 +55,9 @@ to have personality, and quiet enough that she does not talk over the show.
 11. Generate highlight notes, talking points, and YouTube script drafts from the
     best segments.
 12. Upload approved script documents to Google Drive.
-13. Maintain a low-impact notes file for durable preferences, recurring topics,
+13. Look up internet sources when the answer needs current or verifiable
+    information.
+14. Maintain a low-impact notes file for durable preferences, recurring topics,
     open ideas, and useful facts from prior conversations.
 
 ## Suggested local stack
@@ -63,10 +67,11 @@ to have personality, and quiet enough that she does not talk over the show.
 | Avatar app | Warudo | Chosen platform for Zora's 3D avatar, scene workflow, and expression triggers. |
 | Capture/compositing | OBS | Add the avatar as a transparent/window/game capture source. |
 | Speech-to-text | Whisper or a hosted STT API | Start hosted for simplicity; move local later if latency is good. |
-| AI response | Hosted LLM API | Keep answers concise for stream pacing and clear about belief, tradition, theory, and evidence. |
+| AI response | Hosted LLM API | Keep answers concise for stream pacing and clear about belief, tradition, theory, evidence, and sources. |
 | Text-to-speech | ElevenLabs, Azure, or local TTS | Pick a voice that is distinct from the streamer. |
 | Orchestration | Small local Python or Node service | Owns wake phrase detection, prompts, context, state, avatar triggers, and post-stream jobs. |
 | Storage | Local files or SQLite | Stores timestamped transcripts, summaries, highlights, script drafts, and compact memory notes. |
+| Web research | Search/browser API | Looks up current facts, sources, and references when Zora needs internet context. |
 | Cloud export | Google Drive API | Uploads reviewed scripts and content packages to a creator-owned Drive folder. |
 
 ## Design docs
@@ -77,6 +82,7 @@ to have personality, and quiet enough that she does not talk over the show.
 - [Stream-to-YouTube content pipeline](docs/content-pipeline.md)
 - [Memory, transcript archive, and Google Drive export](docs/memory-and-drive.md)
 - [Topic scope and discussion style](docs/topic-scope.md)
+- [Web research and source handling](docs/web-research.md)
 
 ## Stream behavior principles
 
@@ -95,9 +101,11 @@ to have personality, and quiet enough that she does not talk over the show.
   transcripts automatically.
 - Keep long-term notes compact and editable so Zora remembers useful context
   without building a giant hidden memory.
-- Be open to spiritual, historical, religious, astrological, body, awakening,
-  and human-pattern conversations while distinguishing facts, interpretations,
-  traditions, and speculation.
+- Be open to spiritual, historical, religious, astrological, quantum, body,
+  awakening, and human-pattern conversations while distinguishing facts,
+  interpretations, traditions, evidence, and speculation.
+- Use internet lookup for current facts, source checks, and research-backed
+  claims instead of guessing.
 - Prefer "I can look that up" or "I am not sure" over confident guesses.
 - Avoid reading private data, chat messages, or on-screen content unless that
   input source has been deliberately enabled.
