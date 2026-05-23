@@ -22,7 +22,7 @@ Zora needs these major systems:
 
 Required screens:
 
-- Home/status dashboard.
+- Home/status dashboard in a dark blue and pinky-purple hub theme.
 - Live transcript and rolling context.
 - Stream sessions archive.
 - Notes editor for `zora-notes.md`.
@@ -38,7 +38,8 @@ Status indicators should show:
 - Zora state: idle, listening, resting, sleeping, thinking, speaking, muted, or
   panic.
 - OBS status: disconnected, connected, streaming, not streaming.
-- Warudo status: disconnected, connected, current fairy expression/state.
+- Warudo status: disconnected, connected, current avatar expression/state,
+  including hover, sleep, awake, listening, speaking, muted, and panic triggers.
 - Session status: not logging, logging, paused, recovering, processing.
 - Drive status: disabled, authorized, uploading, uploaded, error.
 - Web research status: disabled, enabled, lookup in progress, source saved.
@@ -168,13 +169,16 @@ External dependencies should be replaceable.
 Initial integrations:
 
 - OBS WebSocket for streaming status and optional scene controls.
-- Warudo bridge for fairy expressions and avatar state.
+- Warudo bridge for expressions and avatar state, starting with a human avatar
+  but configured with Zora's practical-fairy triggers.
 - STT provider for transcription.
 - LLM provider for response generation and post-stream processing.
 - TTS provider for Zora's voice.
 - Web lookup provider for internet research.
 - Google Drive API for approved document uploads.
-- Local storage/search for transcripts, notes, and sources.
+- Local storage/search for transcripts, notes, sources, archived series, and
+  Make export packages.
+- Make webhook or file-drop integration for approved script/video automation.
 
 Each integration should provide:
 
@@ -216,3 +220,5 @@ The first downloadable MVP is complete when Zora can:
 - Produce a basic post-stream outline from a saved transcript.
 - Open/edit `zora-notes.md`.
 - Show all configured integrations and their statuses.
+- Prepare approved script or information-page packages for Make video workflows.
+- Archive completed series while keeping them searchable.

@@ -9,9 +9,11 @@ and prepare YouTube scripts from the strongest sections.
 - Preserve the useful parts of long rants and live conversations.
 - Reduce the work needed to find upload-worthy moments after stream.
 - Turn scattered thoughts into structured video ideas.
-- Keep the creator in control of what is saved, reviewed, uploaded, and
-  published.
+- Keep the creator in control of what is saved, reviewed, uploaded, automated,
+  and published.
 - Upload reviewed script documents to Google Drive for editing and sharing.
+- Hand approved scripts or information pages to Make workflows that turn them
+  into videos and schedule uploads.
 
 ## Session capture
 
@@ -139,6 +141,8 @@ For each stream session, Zora can write:
 - `video-ideas.md`: grouped YouTube concepts.
 - `scripts/*.md`: draft scripts for selected ideas.
 - `shorts.md`: short-form clip candidates.
+- `make-export.json`: Make automation payload and status for approved video
+  workflows.
 - `drive-export.json`: Google Drive upload results for approved documents.
 
 ## Transcript lookup across old streams
@@ -200,3 +204,18 @@ Long-form logging is powerful, so it needs explicit controls:
 
 "Zora, review tonight's stream. Pull the best talking points, find anything that
 could become a YouTube video, and draft scripts for the top three ideas."
+
+
+## Make video automation handoff
+
+Zora should support a Make workflow that receives approved scripts or information
+pages, turns them into videos, and uploads them according to a schedule.
+
+Handoff rules:
+
+- Only approved documents enter the Make queue.
+- Zora includes source notes and timestamps when available.
+- Zora includes schedule metadata if the creator has chosen a publish window.
+- Make automation status should be saved back into the session or series folder.
+- Failed automation attempts should remain retryable without regenerating the
+  script.

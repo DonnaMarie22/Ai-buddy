@@ -1,9 +1,11 @@
 # Zora AI Buddy
 
 Zora is a downloadable desktop app that runs in the background on your
-computer and powers a small helpful fairy on stream. The app listens while you
+computer and powers a practical fairy on stream. She is a fairy who got extra
+nerdy with computers and information: usually studying in her tower, fascinated
+by everything human, and ready to help when called. The app listens while you
 talk, answers questions as an in-world computer sidekick, and uses Warudo as her
-visible fairy face/avatar rig.
+visible face/avatar rig.
 
 The goal is not to replace the streamer. Zora should feel like a responsive
 helpful fairy in the corner of the screen: useful for quick questions, playful
@@ -14,8 +16,11 @@ show.
 
 - Zora installs as her own desktop app on the streaming PC.
 - Zora can run in the background or system tray while streaming.
-- A small Warudo-powered 3D fairy avatar appears in the top-right of the stream
-  layout.
+- Zora's desktop hub uses a dark blue and pinky-purple visual theme for her
+  controls, settings, memory, scripts, and integrations.
+- A Warudo-powered avatar appears in the top-right of the stream layout. The
+  first model can be a human avatar, while Zora's triggers and behavior carry the
+  practical-fairy identity until the visual model is updated.
 - Zora listens in the background so she can understand the recent rant or topic.
 - The streamer can ask natural voice questions during a broadcast with "hey
   Zora".
@@ -31,6 +36,8 @@ show.
 - After stream, Zora can compile the strongest talking points and draft YouTube
   scripts from the conversation.
 - Zora can upload reviewed script documents to a Google Drive workspace.
+- Zora can hand approved scripts or information pages to Make workflows that turn
+  them into videos and schedule uploads.
 - Zora can look up old transcripts and keep lightweight notes so future streams
   remember important context without re-reading everything.
 - Zora is prepared to discuss spirituality, history, human beings, the body,
@@ -63,19 +70,23 @@ show.
 13. Upload approved script documents to Google Drive.
 14. Look up internet sources when the answer needs current or verifiable
     information.
-15. Maintain a low-impact notes file for durable preferences, recurring topics,
+15. Ask during install where to store Zora's memory bank, including a specific
+    drive or folder chosen by the creator.
+16. Maintain a low-impact notes file for durable preferences, recurring topics,
     open ideas, and useful facts from prior conversations.
-16. Provide a desktop UI for status, settings, transcripts, notes, scripts, and
-    integrations.
-17. Include privacy controls, crash recovery, source notes, update handling,
-    panic mode, integration plugins, and personality tuning.
+17. Provide a dark blue and pinky-purple desktop hub for status, settings,
+    transcripts, notes, scripts, and integrations.
+18. Archive old completed content series so active work stays clean.
+19. Include privacy controls, crash recovery, source notes, update handling,
+    panic mode, integration plugins, Make video workflow support, and personality
+    tuning.
 
 ## Suggested local stack
 
 | Layer | Recommended first choice | Notes |
 | --- | --- | --- |
-| Zora desktop app | Downloadable Windows-first desktop app | Owns listening, wake phrases, memory, web research, scripts, Drive export, and state. |
-| Face/avatar rig | Warudo | Chosen platform for Zora's visible 3D fairy face, scene workflow, and expression triggers. |
+| Zora desktop app | Downloadable Windows-first desktop app | Owns listening, wake phrases, memory bank, web research, scripts, Make export, Drive export, and state. |
+| Face/avatar rig | Warudo | Chosen platform for Zora's visible 3D face/avatar rig; MVP can use a human avatar with fairy triggers. |
 | Capture/compositing | OBS | Captures the Warudo avatar and Zora audio as stream sources. |
 | Speech-to-text | Whisper or a hosted STT API | Start hosted for simplicity; move local later if latency is good. |
 | AI response | Hosted LLM API | Keep answers concise for stream pacing and clear about belief, tradition, theory, evidence, and sources. |
@@ -90,9 +101,11 @@ show.
 - [Architecture](docs/architecture.md)
 - [Downloadable desktop app](docs/desktop-app.md)
 - [Complete app requirements](docs/app-requirements.md)
+- [Visual design](docs/visual-design.md)
 - [Stream setup checklist](docs/stream-setup.md)
 - [Personality and behavior guide](docs/personality.md)
 - [Stream-to-YouTube content pipeline](docs/content-pipeline.md)
+- [Make video automation integration](docs/make-video-automation.md)
 - [Memory, transcript archive, and Google Drive export](docs/memory-and-drive.md)
 - [Topic scope and discussion style](docs/topic-scope.md)
 - [Web research and source handling](docs/web-research.md)
@@ -100,8 +113,9 @@ show.
 ## Stream behavior principles
 
 - Keep answers brief unless the streamer asks for detail.
-- Express Zora as a helpful fairy: bright, curious, lightly magical, and kind
-  without becoming childish or distracting.
+- Express Zora as a practical helpful fairy who got extra nerdy with computers
+  and information: bright, curious, lightly magical, studious, and kind without
+  becoming childish or distracting.
 - Never interrupt unless explicitly invited by "hey Zora", a hotkey, or a
   command.
 - Treat "Zora rest" as an immediate pause for listening/logging and "Zora
@@ -172,3 +186,14 @@ Zora's downloadable app should include the practical pieces needed for live use:
 - Plugin-style integrations for OBS, Warudo, Drive, web, STT, TTS, and LLMs.
 - Personality tuning for answer length, tone, spirituality/science balance, and
   how often Zora speaks.
+
+
+## Desktop hub direction
+
+Zora's app should feel like her control tower: a dark blue and pinky-purple hub
+for listening state, Warudo triggers, OBS status, memory, scripts, sources, Drive
+exports, Make automations, and personality settings.
+
+During install, Zora should ask where to store her memory bank. The creator can
+choose a specific drive or folder, and Zora should keep transcripts, notes,
+archives, scripts, source metadata, and Make export packages under that location.

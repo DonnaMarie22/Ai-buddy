@@ -11,7 +11,8 @@ stream risk, and replaceable services.
 ```text
 Zora downloadable desktop app
   -> installs on the streaming PC
-  -> owns listening, memory, research, scripts, Drive export, and state
+  -> owns listening, memory bank, research, scripts, Make export, Drive export,
+     and state
   -> drives Warudo as the visible helpful fairy face/avatar rig
   -> exposes audio and visual sources to OBS
 
@@ -37,8 +38,9 @@ Post-stream transcript
   -> highlight scorer
   -> YouTube script generator
   -> compact memory notes updater
+  -> Make video automation export
   -> Google Drive export
-  -> draft titles, descriptions, chapters, and clip notes
+  -> draft titles, descriptions, chapters, clip notes, and schedule metadata
 ```
 
 ## Application boundary
@@ -64,7 +66,7 @@ Desktop app responsibilities:
 
 - Installer or packaged executable.
 - First-run setup wizard for microphone, hotkeys, Warudo, OBS, API keys, Drive,
-  and storage location.
+  Make automation, and memory bank drive/folder location.
 - System tray/background mode.
 - Local settings and logs.
 - Start/stop controls for listening, logging, TTS, and post-stream jobs.
@@ -382,8 +384,8 @@ during long streams:
 - Source service for web lookup citations and claim-review notes.
 - Update service for version checks and release notes.
 - Panic service for immediate stop/mute/rest/hide behavior.
-- Integration service for OBS, Warudo, Google Drive, web lookup, STT, TTS, and
-  LLM providers.
+- Integration service for OBS, Warudo, Google Drive, Make, web lookup, STT,
+  TTS, and LLM providers.
 - Personality service for tone, length, frequency, and topic-style settings.
 
 Reliability rule: a 3-4 hour stream should not depend on one in-memory transcript

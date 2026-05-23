@@ -1,6 +1,6 @@
 # Memory, Transcript Archive, and Google Drive Export
 
-Zora needs two kinds of memory:
+Zora needs a creator-selected memory bank plus two kinds of memory:
 
 1. Heavy source material: full stream transcripts, summaries, highlights, and
    scripts.
@@ -13,7 +13,9 @@ them easy to open, export, archive, or delete.
 
 ## Lightweight notes file
 
-Use a plain markdown file such as `zora-notes.md` for durable context.
+During install, Zora should ask which drive or folder should hold her memory
+bank. Use a plain markdown file such as `zora-notes.md` inside that memory bank
+for durable context.
 
 Recommended sections:
 
@@ -55,7 +57,7 @@ Full transcripts should live outside the compact notes file. A simple local
 folder structure is enough for the first version:
 
 ```text
-zora-data/
+zora-memory-bank/
   settings.json
   zora-notes.md
   sessions/
@@ -66,7 +68,10 @@ zora-data/
       video-ideas.md
       scripts/
         script-idea-1.md
+      make-export.json
       drive-export.json
+  archives/
+    completed-series/
 ```
 
 Zora can look up prior conversations by searching session summaries and tags
@@ -142,3 +147,19 @@ Keep a local record of uploaded files so Zora can find them again:
 - Require approval before uploading raw transcripts or notes.
 - Store Google OAuth tokens outside the repository.
 - Keep all generated scripts editable before upload.
+
+
+## Completed series archives
+
+When a content series is finished, Zora should archive it out of the active work
+area while keeping it searchable for future context.
+
+Archive metadata should include:
+
+- Series name.
+- Date archived.
+- Related sessions.
+- Final scripts or information pages.
+- Drive links.
+- Make automation IDs or upload references when available.
+- Notes on whether the series can be reused as future context.

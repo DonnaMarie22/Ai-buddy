@@ -2,7 +2,9 @@
 
 Zora should be a downloadable app for the creator's computer, not just a script
 or collection of prompts. The app is the brain that runs in the background while
-Warudo provides Zora's visible helpful fairy face on stream.
+Warudo provides Zora's visible face on stream. The app should feel like the
+control hub of a practical fairy who got extra nerdy with computers and
+information.
 
 ## Platform target
 
@@ -45,7 +47,8 @@ First-run setup should ask for:
 6. LLM/STT/TTS provider configuration.
 7. Optional web research provider or browser/search API.
 8. Optional Google Drive authorization.
-9. Local data folder location.
+9. Memory bank drive/folder location for notes, transcripts, archives, sources,
+   scripts, and automation exports.
 10. Whether Zora should start with Windows.
 
 ## Background and tray mode
@@ -58,16 +61,31 @@ Expected behavior:
   muted.
 - Right-click menu exposes quick actions: rest, awaken, mute, stop speaking,
   start/stop session log, open notes, open settings, quit.
-- Desktop window can show transcripts, logs, session status, Drive uploads, and
-  script drafts.
+- Desktop window can show transcripts, logs, session status, Drive uploads,
+  Make automation exports, archived series, and script drafts.
 - Closing the window can minimize to tray if background mode is enabled.
+
+## Visual theme
+
+Zora's desktop hub should use a dark blue and pinky-purple visual direction.
+The feeling should be "fairy control tower": practical controls, readable status,
+soft glow accents, and a little magic without sacrificing clarity.
+
+Suggested palette:
+
+- Deep navy background.
+- Midnight blue panels.
+- Pinky-purple accents.
+- Soft lavender highlights.
+- Bright status colors only for alerts, live streaming, and panic mode.
 
 ## Local data layout
 
-A first version can keep data in a creator-selected folder:
+A first version can keep data in a creator-selected memory bank folder chosen
+during install:
 
 ```text
-zora-data/
+zora-memory-bank/
   settings.json
   zora-notes.md
   logs/
@@ -79,7 +97,13 @@ zora-data/
       talking-points.md
       video-ideas.md
       scripts/
+      make-export.json
       drive-export.json
+  archives/
+    completed-series/
+  make/
+    outgoing/
+    processed/
 ```
 
 Secrets such as OAuth tokens and API keys should be stored in the operating
@@ -105,7 +129,8 @@ MVP acceptance criteria:
 - Zora launches from a desktop shortcut.
 - Zora can run in the background/system tray.
 - Zora can connect to Warudo and OBS settings.
-- Zora can save transcripts and notes under a local data folder.
+- Zora asks where to store her memory bank during install.
+- Zora can save transcripts and notes under the selected memory bank folder.
 - Zora can be paused with "Zora rest" and resumed with "Zora awaken".
 - Zora can be closed without corrupting the active session log.
 
@@ -266,3 +291,38 @@ Settings should include:
 - Whether Zora asks follow-up questions.
 - Whether Zora can suggest YouTube angles after a rant.
 - Maximum response duration while live.
+
+
+## Completed series archive
+
+The app should separate active projects from completed content series.
+
+Archive behavior:
+
+- Completed series can be moved into `archives/completed-series/`.
+- Archived series remain searchable for memory and old transcript lookup.
+- Archived series should not clutter the active scripts dashboard.
+- Zora can use archived material as context when requested.
+- Archive actions should be reversible or require confirmation.
+
+## Make automation support
+
+Zora should be able to work with Make workflows that transform scripts or
+information pages into videos and upload them on a schedule.
+
+The desktop app should prepare export packages that Make can pick up or receive
+through a webhook.
+
+Export package contents:
+
+- Approved script markdown.
+- Optional information page or research notes.
+- Title and description draft.
+- Source notes.
+- Suggested clips or B-roll notes.
+- Upload schedule metadata.
+- Series/project name.
+- Whether the item is a full video, Short, or information page.
+
+Zora should not auto-submit rough drafts to Make. The creator should approve a
+script or information page before it enters the automation queue.

@@ -13,7 +13,8 @@ Zora desktop app.
 - [ ] Visible indicator for whether background listening is active or paused.
 - [ ] Enough local disk space for timestamped transcript logs.
 - [ ] Clear naming convention for each stream session.
-- [ ] Local folder for Zora notes, transcripts, and script drafts.
+- [ ] Specific drive/folder chosen for Zora's memory bank, notes, transcripts,
+      archives, and script drafts.
 - [ ] Internet lookup provider or browser/search API selected if web research is
       enabled.
 - [ ] Google Drive destination folder selected for approved script uploads.
@@ -38,20 +39,24 @@ Warudo or OBS closes.
 
 Chosen target: Warudo.
 
-- [ ] Import or select a small 3D fairy avatar/face rig for Zora.
-- [ ] Build a hovering fairy idle pose suitable for the top-right corner.
+- [ ] Use the current human Warudo avatar for the MVP.
+- [ ] Configure the human avatar with Zora's practical-fairy triggers and states.
+- [ ] Build a hover-style idle or subtle floating presence suitable for the
+      top-right corner.
 - [ ] Configure lip sync from the Zora TTS audio source.
-- [ ] Add expression triggers for idle, listening, resting, thinking, and speaking.
+- [ ] Add expression triggers for idle, listening, hover, sleeping/resting,
+      awake, thinking, speaking, muted, and panic.
 - [ ] Add a subtle fairy glow/listening indicator for wake phrase/background
-      context mode.
+      context mode, even while using the temporary human avatar.
 - [ ] Add a resting/sleeping expression for the "Zora rest" command.
 - [ ] Add a sleeping loop that plays when OBS is streaming and Zora is asleep.
 - [ ] Add an awaken transition for the "Zora awaken" command.
 - [ ] Test transparent capture or chroma-key capture into OBS.
 
-Warudo is the committed choice for the MVP. Zora's Warudo model should read as
-a helpful fairy rather than a generic assistant. Other avatar tools are out of
-scope unless the project later needs a separate compatibility layer.
+Warudo is the committed choice for the MVP. The first Warudo model can be a
+human avatar, but it should still read as Zora through triggers, expressions,
+hover/sleep/awake states, and practical-fairy behavior. Other avatar tools are
+out of scope unless the project later needs a separate compatibility layer.
 
 ## OBS scene layout
 
@@ -159,3 +164,19 @@ Before using Zora in a real stream, confirm:
 - [ ] Source notes are saved when web lookup is used.
 - [ ] Drive upload is disabled unless explicitly approved.
 - [ ] Personality settings are visible and editable.
+
+
+## Warudo trigger checklist
+
+Even while the MVP uses a human avatar, configure the full Zora trigger set:
+
+- [ ] Idle/present.
+- [ ] Hover or subtle float.
+- [ ] Listening.
+- [ ] Thinking/studying.
+- [ ] Speaking.
+- [ ] Sleeping/resting after "Zora rest".
+- [ ] Awake transition after "Zora awaken".
+- [ ] Muted.
+- [ ] Panic/emergency stop.
+- [ ] OBS-live sleeping loop.
