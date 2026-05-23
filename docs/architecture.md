@@ -8,6 +8,7 @@ It favors clear local control, low stream risk, and replaceable services.
 
 ```text
 Streamer mic
+  -> control phrase detector
   -> local background listener
   -> timestamped stream transcript
   -> rolling transcript/context summary
@@ -46,16 +47,26 @@ Recommended MVP behavior:
 - Save a timestamped full-stream transcript for post-stream content creation.
 - Keep the rolling context private by default.
 - Do not speak until the wake phrase is detected.
+- Pause listening/logging immediately when "Zora rest" is heard.
+- Resume listening/logging when "Zora awaken" is heard.
 - Provide an obvious mute/pause control for live-stream safety.
 
-### 2. Wake phrase gate
+### 2. Control phrase and wake phrase gate
 
-The wake phrase is the boundary between passive context and an active request.
-Zora should answer only after hearing "hey Zora" or after a manual hotkey/button
-trigger.
+Zora has two phrase layers:
+
+- Control phrases change whether she is listening/logging.
+- The wake phrase starts an active request that should receive an answer.
+
+"Zora rest" pauses background listening and transcript logging. "Zora awaken"
+resumes background listening and transcript logging. "Hey Zora" is the boundary
+between passive context and an active request. Zora should answer only after
+hearing "hey Zora" or after a manual hotkey/button trigger.
 
 Supported trigger options:
 
+- Pause command: "Zora rest".
+- Resume command: "Zora awaken".
 - Wake phrase: "hey Zora".
 - Push-to-talk hotkey as a reliable fallback.
 - Manual OBS/Stream Deck button.
@@ -136,7 +147,8 @@ Recommended responsibilities:
 - Maintain a short rolling conversation history of direct Zora interactions.
 - Add the Zora personality prompt.
 - Enforce short answer length.
-- Track current state: `idle`, `listening`, `thinking`, `speaking`, `muted`.
+- Track current state: `idle`, `listening`, `resting`, `thinking`, `speaking`,
+  `muted`.
 - Reject new requests while speaking unless interruption is enabled.
 
 ### 7. LLM response
@@ -187,18 +199,19 @@ The bridge maps Zora state to the avatar application.
 
 Minimum states:
 
-| Zora state | Avatar behavior |
+| Zora state | Warudo avatar behavior |
 | --- | --- |
 | `idle` | Idle animation, occasional blink or subtle motion. |
 | `listening` | Attentive expression or small "recording" animation. |
+| `resting` | Sleeping, dimmed, powered-down, or relaxed pose after "Zora rest". |
 | `thinking` | Processing expression, loading animation, or eye movement. |
 | `speaking` | Talk animation and lip sync from TTS audio. |
-| `muted` | Idle or sleeping pose. |
+| `muted` | Silent pose for hard mute or emergency stop. |
 
-Warudo is the preferred first target because it can combine a 3D avatar, props,
-scene layout, and triggers in a streamer-friendly workflow. VSeeFace, Animaze,
-or legacy FaceRig can also work if the bridge only needs to provide audio for lip
-sync and a few hotkey/expression triggers.
+Warudo is the chosen avatar target because it can combine a 3D avatar, props,
+scene layout, and triggers in a streamer-friendly workflow. The bridge should map
+Zora's state changes to Warudo triggers, including a distinct resting pose for
+"Zora rest" and an awake/listening transition for "Zora awaken".
 
 ### 11. OBS integration
 
@@ -206,7 +219,7 @@ OBS composes the final stream.
 
 Recommended sources:
 
-- Avatar capture source with transparency if available.
+- Warudo avatar capture source with transparency if available.
 - Dedicated Zora audio source for volume control.
 - Optional caption/subtitle browser source for Zora's response.
 

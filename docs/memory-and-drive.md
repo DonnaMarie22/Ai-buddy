@@ -21,6 +21,8 @@ Recommended sections:
 
 ## Creator preferences
 - Zora answers only after "hey Zora" unless manually triggered.
+- "Zora rest" pauses background listening/logging.
+- "Zora awaken" resumes background listening/logging.
 - Approved scripts can be uploaded to Google Drive.
 
 ## Recurring projects
@@ -131,7 +133,7 @@ Keep a local record of uploaded files so Zora can find them again:
 ## Safety controls
 
 - Show whether Zora is logging a session.
-- Let the creator pause logging.
+- Let the creator pause logging with "Zora rest".
 - Let the creator delete a session.
 - Require approval before uploading raw transcripts or notes.
 - Store Google OAuth tokens outside the repository.

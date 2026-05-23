@@ -17,13 +17,15 @@ Use this checklist to assemble the first on-stream version of Zora.
 
 ## Avatar application
 
-Recommended first target: Warudo.
+Chosen target: Warudo.
 
 - [ ] Import or select a small 3D avatar for Zora.
 - [ ] Build an idle pose suitable for the top-right corner.
 - [ ] Configure lip sync from the Zora TTS audio source.
-- [ ] Add expression triggers for idle, listening, thinking, and speaking.
+- [ ] Add expression triggers for idle, listening, resting, thinking, and speaking.
 - [ ] Add a subtle listening indicator for wake phrase/background context mode.
+- [ ] Add a resting/sleeping expression for the "Zora rest" command.
+- [ ] Add an awaken transition for the "Zora awaken" command.
 - [ ] Test transparent capture or chroma-key capture into OBS.
 
 Alternatives:
@@ -45,6 +47,9 @@ Alternatives:
 ## Local controller
 
 - [ ] Add the wake phrase `hey Zora`.
+- [ ] Add the pause command `Zora rest`.
+- [ ] Add the resume command `Zora awaken`.
+- [ ] Add hotkeys for manual listen, pause/rest, mute, and stop controls.
 - [ ] Add push-to-talk as a backup for noisy stream moments.
 - [ ] Keep a short rolling transcript or summary of recent streamer context.
 - [ ] Save a timestamped full-stream transcript for post-stream review.
@@ -54,15 +59,19 @@ Alternatives:
 - [ ] Send short responses to TTS.
 - [ ] Trigger avatar state changes:
   - `listening` while background context is active or the wake phrase is heard.
+  - `resting` after "Zora rest" pauses listening/logging.
   - `thinking` while waiting for the AI response.
   - `speaking` while TTS plays.
   - `idle` after playback ends.
-  - `muted` when background listening is paused.
+  - `muted` for hard mute or emergency stop.
 
 ## Stream safety checks
 
 - [ ] Zora can be muted instantly.
 - [ ] Zora does not answer without "hey Zora" or a manual trigger.
+- [ ] "Zora rest" pauses background listening/logging.
+- [ ] "Zora awaken" resumes background listening/logging.
+- [ ] Hotkeys can override voice commands if speech detection fails.
 - [ ] Zora does not repeat background rant context unless asked.
 - [ ] Full-stream logs can be paused, exported, or deleted.
 - [ ] Google Drive uploads require review/approval before raw transcripts are
@@ -82,7 +91,11 @@ Try these before using Zora in a real broadcast:
 3. "Hey Zora, does this option or that option make more sense?"
 4. "Hey Zora, give me the quick version of what I was just ranting about."
 5. "Stop talking."
-6. Mute and unmute Zora from OBS or the controller.
+6. "Zora rest."
+7. Confirm the Warudo avatar enters the resting pose and logging pauses.
+8. "Zora awaken."
+9. Confirm the Warudo avatar returns to listening/idle and logging resumes.
+10. Mute and unmute Zora from OBS or the controller.
 
 
 ## Post-stream content checklist

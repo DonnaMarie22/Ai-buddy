@@ -15,7 +15,11 @@ to have personality, and quiet enough that she does not talk over the show.
 - The streamer can ask natural voice questions during a broadcast with "hey
   Zora".
 - Zora thinks through the request, replies with text-to-speech, and animates in a
-  face/VTuber rig such as Warudo, VSeeFace, Animaze, or legacy FaceRig.
+  Warudo 3D avatar rig.
+- "Zora rest" pauses background listening/logging.
+- "Zora awaken" resumes background listening/logging.
+- A hotkey can also force listen, pause, mute, or stop as a reliable manual
+  backup during live streams.
 - Zora can log a full 3-4 hour stream transcript for post-stream review.
 - After stream, Zora can compile the strongest talking points and draft YouTube
   scripts from the conversation.
@@ -29,25 +33,29 @@ to have personality, and quiet enough that she does not talk over the show.
 
 1. Keep a short local rolling transcript or summary of the streamer's recent
    rant/context.
-2. Detect the wake phrase "hey Zora" before answering.
-3. Transcribe the streamer's question and attach the recent context.
-4. Send the request to an LLM with a short Zora persona prompt.
-5. Generate a short spoken answer with TTS.
-6. Route the audio to OBS and the avatar application.
-7. Trigger avatar expressions for idle, listening, thinking, and speaking.
-8. Save the long-form stream transcript with timestamps for post-stream content
-   processing.
-9. Generate highlight notes, talking points, and YouTube script drafts from the
-   best segments.
-10. Upload approved script documents to Google Drive.
-11. Maintain a low-impact notes file for durable preferences, recurring topics,
+2. Support hotkeys for manual listen, pause, mute, and stop controls.
+3. Detect control phrases: "Zora rest" to pause listening and "Zora awaken"
+   to resume listening.
+4. Detect the wake phrase "hey Zora" before answering questions.
+5. Transcribe the streamer's question and attach the recent context.
+6. Send the request to an LLM with a short Zora persona prompt.
+7. Generate a short spoken answer with TTS.
+8. Route the audio to OBS and Warudo.
+9. Trigger Warudo expressions for idle, listening, resting, thinking, and
+   speaking.
+10. Save the long-form stream transcript with timestamps for post-stream content
+    processing.
+11. Generate highlight notes, talking points, and YouTube script drafts from the
+    best segments.
+12. Upload approved script documents to Google Drive.
+13. Maintain a low-impact notes file for durable preferences, recurring topics,
     open ideas, and useful facts from prior conversations.
 
 ## Suggested local stack
 
 | Layer | Recommended first choice | Notes |
 | --- | --- | --- |
-| Avatar app | Warudo | Strong streamer workflow and expression triggers. |
+| Avatar app | Warudo | Chosen platform for Zora's 3D avatar, scene workflow, and expression triggers. |
 | Capture/compositing | OBS | Add the avatar as a transparent/window/game capture source. |
 | Speech-to-text | Whisper or a hosted STT API | Start hosted for simplicity; move local later if latency is good. |
 | AI response | Hosted LLM API | Keep answers concise for stream pacing. |
@@ -69,6 +77,8 @@ to have personality, and quiet enough that she does not talk over the show.
 - Keep answers brief unless the streamer asks for detail.
 - Never interrupt unless explicitly invited by "hey Zora", a hotkey, or a
   command.
+- Treat "Zora rest" as an immediate pause for listening/logging and "Zora
+  awaken" as the command to resume listening/logging.
 - Treat background rant context as private working memory, not public content to
   repeat unless asked.
 - Treat full-stream logs as creator-owned source material that can be paused,
