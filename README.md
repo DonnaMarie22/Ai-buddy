@@ -28,6 +28,9 @@ to have personality, and quiet enough that she does not talk over the show.
 - Zora can upload reviewed script documents to a Google Drive workspace.
 - Zora can look up old transcripts and keep lightweight notes so future streams
   remember important context without re-reading everything.
+- Zora is prepared to discuss spirituality, history, human beings, the body,
+  awakening theories, astrology, religion, and other subjects about human
+  patterns with curiosity and nuance.
 - The avatar idles when not in use and can show simple reactions while speaking,
   listening, surprised, or thinking.
 
@@ -60,7 +63,7 @@ to have personality, and quiet enough that she does not talk over the show.
 | Avatar app | Warudo | Chosen platform for Zora's 3D avatar, scene workflow, and expression triggers. |
 | Capture/compositing | OBS | Add the avatar as a transparent/window/game capture source. |
 | Speech-to-text | Whisper or a hosted STT API | Start hosted for simplicity; move local later if latency is good. |
-| AI response | Hosted LLM API | Keep answers concise for stream pacing. |
+| AI response | Hosted LLM API | Keep answers concise for stream pacing and clear about belief, tradition, theory, and evidence. |
 | Text-to-speech | ElevenLabs, Azure, or local TTS | Pick a voice that is distinct from the streamer. |
 | Orchestration | Small local Python or Node service | Owns wake phrase detection, prompts, context, state, avatar triggers, and post-stream jobs. |
 | Storage | Local files or SQLite | Stores timestamped transcripts, summaries, highlights, script drafts, and compact memory notes. |
@@ -73,6 +76,7 @@ to have personality, and quiet enough that she does not talk over the show.
 - [Personality and behavior guide](docs/personality.md)
 - [Stream-to-YouTube content pipeline](docs/content-pipeline.md)
 - [Memory, transcript archive, and Google Drive export](docs/memory-and-drive.md)
+- [Topic scope and discussion style](docs/topic-scope.md)
 
 ## Stream behavior principles
 
@@ -91,6 +95,9 @@ to have personality, and quiet enough that she does not talk over the show.
   transcripts automatically.
 - Keep long-term notes compact and editable so Zora remembers useful context
   without building a giant hidden memory.
+- Be open to spiritual, historical, religious, astrological, body, awakening,
+  and human-pattern conversations while distinguishing facts, interpretations,
+  traditions, and speculation.
 - Prefer "I can look that up" or "I am not sure" over confident guesses.
 - Avoid reading private data, chat messages, or on-screen content unless that
   input source has been deliberately enabled.

@@ -59,6 +59,8 @@ Group the transcript into coherent topic blocks such as:
 - Funny rants.
 - Useful explanations.
 - Strong opinions.
+- Spirituality, history, religion, astrology, embodiment, awakening, and
+  human-pattern conversations.
 - Questions from viewers.
 - Moments that could become Shorts.
 
@@ -72,6 +74,7 @@ Score each segment with simple criteria:
 | Energy | The streamer sounds excited, funny, annoyed, or passionate. |
 | Usefulness | The segment teaches, explains, or helps viewers decide something. |
 | Novelty | The take feels specific rather than generic. |
+| Nuance | Sensitive subjects separate fact, tradition, belief, and speculation. |
 | Clipability | The moment can stand alone with minimal context. |
 
 ### 4. Extract talking points

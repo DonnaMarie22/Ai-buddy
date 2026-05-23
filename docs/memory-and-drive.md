@@ -30,6 +30,8 @@ Recommended sections:
 
 ## Content ideas
 - Turn long stream rants into YouTube scripts and Shorts.
+- Explore spirituality, history, religion, astrology, awakening, embodiment, and
+  human-pattern topics with nuance.
 
 ## Decisions
 - Raw transcripts stay local unless explicitly approved for upload.
