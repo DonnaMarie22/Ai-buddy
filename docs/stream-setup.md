@@ -136,3 +136,24 @@ After the broadcast ends:
 - [ ] Store the Drive links in the session metadata.
 - [ ] Update `zora-notes.md` with durable decisions, recurring topics, and ideas.
 - [ ] Delete or archive raw transcripts according to the creator's preference.
+
+
+## Desktop app acceptance checklist
+
+Before using Zora in a real stream, confirm:
+
+- [ ] Desktop window opens from a shortcut.
+- [ ] Tray icon shows listening/resting/muted/speaking state.
+- [ ] Setup wizard has been completed.
+- [ ] Microphone, TTS output, OBS audio, and Warudo lip sync tests pass.
+- [ ] Warudo and OBS connection statuses are visible.
+- [ ] Hotkeys work even when Zora is in the background.
+- [ ] "Zora rest" pauses listening/logging and shows sleeping animation if OBS is
+      streaming.
+- [ ] "Zora awaken" resumes listening/logging.
+- [ ] Panic mode stops TTS and pauses logging immediately.
+- [ ] Transcript chunks autosave during a test session.
+- [ ] Unfinished sessions can be recovered after restart.
+- [ ] Source notes are saved when web lookup is used.
+- [ ] Drive upload is disabled unless explicitly approved.
+- [ ] Personality settings are visible and editable.

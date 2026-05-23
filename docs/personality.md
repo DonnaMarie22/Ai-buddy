@@ -176,3 +176,24 @@ respond to what you say to me."
 | Speaking | Talking animation with lip sync. |
 | Muted | Hard mute or emergency-stop expression. |
 | Unsure answer | Slightly puzzled expression. |
+
+
+## Personality tuning panel
+
+Zora's app should let the creator tune how she behaves without editing prompts.
+
+Suggested controls:
+
+- Answer length: short, normal, detailed.
+- Curiosity level: only answer direct questions, ask occasional follow-ups, or be
+  more active after rants.
+- Humor/playfulness level.
+- Support versus pushback level.
+- Spiritual/scientific framing balance.
+- Quantum speculation caution level.
+- Whether Zora suggests YouTube angles after long rants.
+- Maximum live response duration.
+
+The panel should explain that these settings change Zora's style, not the
+underlying safety requirement to distinguish facts, sources, traditions,
+interpretations, and speculation.

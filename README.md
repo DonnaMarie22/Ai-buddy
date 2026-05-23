@@ -63,6 +63,10 @@ to have personality, and quiet enough that she does not talk over the show.
     information.
 15. Maintain a low-impact notes file for durable preferences, recurring topics,
     open ideas, and useful facts from prior conversations.
+16. Provide a desktop UI for status, settings, transcripts, notes, scripts, and
+    integrations.
+17. Include privacy controls, crash recovery, source notes, update handling,
+    panic mode, integration plugins, and personality tuning.
 
 ## Suggested local stack
 
@@ -83,6 +87,7 @@ to have personality, and quiet enough that she does not talk over the show.
 
 - [Architecture](docs/architecture.md)
 - [Downloadable desktop app](docs/desktop-app.md)
+- [Complete app requirements](docs/app-requirements.md)
 - [Stream setup checklist](docs/stream-setup.md)
 - [Personality and behavior guide](docs/personality.md)
 - [Stream-to-YouTube content pipeline](docs/content-pipeline.md)
@@ -145,3 +150,21 @@ produces:
 - A Drive export package for reviewed scripts and content planning documents.
 - Updates to a compact notes file with recurring topics, decisions, and ideas
   worth remembering next time.
+
+
+## Complete app requirements
+
+Zora's downloadable app should include the practical pieces needed for live use:
+
+- Desktop window and tray UI for status, settings, transcripts, notes, and scripts.
+- First-run setup for microphone, audio routing, hotkeys, Warudo, OBS, providers,
+  web research, Google Drive, and storage.
+- Privacy controls for pausing, deleting, exporting, and clearing local data.
+- Crash recovery so long stream transcripts are autosaved safely.
+- Audio routing for microphone input, TTS output, OBS, and Warudo lip sync.
+- Source/citation tracking for web research and YouTube scripts.
+- Update/version handling for downloadable releases.
+- Panic mode for instant stop, mute, rest, and optional hide.
+- Plugin-style integrations for OBS, Warudo, Drive, web, STT, TTS, and LLMs.
+- Personality tuning for answer length, tone, spirituality/science balance, and
+  how often Zora speaks.

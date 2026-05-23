@@ -367,3 +367,25 @@ A local prototype can expose the following simple internal events:
 
 These events can later be sent to Warudo, OBS, a browser overlay, or a Stream
 Deck plugin without changing the conversation logic.
+
+
+## App services and reliability
+
+The downloadable app should include internal services that make Zora reliable
+during long streams:
+
+- UI service for window/tray state.
+- Setup service for onboarding and provider configuration.
+- Audio service for mic capture, TTS output, virtual cable routing, and volume.
+- Session service for transcript chunking, autosave, and crash recovery.
+- Privacy service for pause, delete, export, and clear-memory controls.
+- Source service for web lookup citations and claim-review notes.
+- Update service for version checks and release notes.
+- Panic service for immediate stop/mute/rest/hide behavior.
+- Integration service for OBS, Warudo, Google Drive, web lookup, STT, TTS, and
+  LLM providers.
+- Personality service for tone, length, frequency, and topic-style settings.
+
+Reliability rule: a 3-4 hour stream should not depend on one in-memory transcript
+buffer. Zora should write small timestamped chunks as she goes and recover an
+unfinished session on the next launch.
