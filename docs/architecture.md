@@ -21,10 +21,13 @@ Streamer mic
   -> avatar app expression and mouth movement
 
 Post-stream transcript
+  -> archive lookup
   -> segmenter
   -> talking point extractor
   -> highlight scorer
   -> YouTube script generator
+  -> compact memory notes updater
+  -> Google Drive export
   -> draft titles, descriptions, chapters, and clip notes
 ```
 
@@ -94,11 +97,36 @@ Recommended data model:
 - `post_stream_summary`: longer outline generated after the session.
 - `highlights`: selected moments with timestamps, reasons, and suggested formats.
 - `scripts`: generated YouTube script drafts linked back to source segments.
+- `drive_exports`: approved documents uploaded to Google Drive, including Drive
+  file IDs and export timestamps.
 
 Storage can start as local JSONL or SQLite. Avoid keeping raw audio by default
 unless the creator explicitly enables it.
 
-### 5. Conversation controller
+### 5. Long-term notes and transcript archive
+
+Zora should be able to use older conversations without loading every full
+transcript into live context. The archive layer separates heavy source material
+from compact durable memory.
+
+Recommended files:
+
+- `zora-notes.md`: compact, human-editable memory for recurring preferences,
+  ongoing projects, decisions, names, and content ideas.
+- `sessions/{session_id}/transcript.jsonl`: timestamped transcript chunks.
+- `sessions/{session_id}/summary.md`: searchable session outline.
+- `sessions/{session_id}/talking-points.md`: best moments and quotes.
+- `sessions/{session_id}/scripts/*.md`: draft scripts generated from that stream.
+
+Lookup behavior:
+
+- Search old session summaries first.
+- Pull exact transcript segments only when needed.
+- Cite timestamps when using old transcripts for a new script.
+- Ask before treating sensitive or private notes as stream material.
+- Keep `zora-notes.md` short enough to load quickly at startup.
+
+### 6. Conversation controller
 
 The controller owns Zora's state, memory window, and prompt sent to the LLM.
 
@@ -111,7 +139,7 @@ Recommended responsibilities:
 - Track current state: `idle`, `listening`, `thinking`, `speaking`, `muted`.
 - Reject new requests while speaking unless interruption is enabled.
 
-### 6. LLM response
+### 7. LLM response
 
 The LLM should answer in Zora's voice while using only the information available
 to it.
@@ -128,7 +156,7 @@ Response constraints:
 - Do not claim to see the game, desktop, or chat unless those integrations are
   explicitly enabled.
 
-### 7. Safety and pacing filter
+### 8. Safety and pacing filter
 
 Before speech output, apply a small final pass to protect the live stream.
 
@@ -141,7 +169,7 @@ The MVP filter can:
 - Convert links into "I found a link, but I will not read the full URL on
   stream."
 
-### 8. Text-to-speech
+### 9. Text-to-speech
 
 TTS produces Zora's spoken response. Choose a voice that is clearly not the
 streamer's voice so viewers understand who is talking.
@@ -153,7 +181,7 @@ Operational needs:
 - Optional audio ducking so Zora does not overpower the stream.
 - A local mute switch.
 
-### 9. Avatar bridge
+### 10. Avatar bridge
 
 The bridge maps Zora state to the avatar application.
 
@@ -172,7 +200,7 @@ scene layout, and triggers in a streamer-friendly workflow. VSeeFace, Animaze,
 or legacy FaceRig can also work if the bridge only needs to provide audio for lip
 sync and a few hotkey/expression triggers.
 
-### 10. OBS integration
+### 11. OBS integration
 
 OBS composes the final stream.
 
@@ -184,7 +212,7 @@ Recommended sources:
 
 Keep Zora in a separate OBS scene group so she can be hidden instantly.
 
-### 11. Post-stream content pipeline
+### 12. Post-stream content pipeline
 
 After a stream ends, Zora can run a batch job over the full transcript.
 
@@ -199,6 +227,28 @@ Pipeline stages:
 
 This mode should not talk live on stream. It can run after the broadcast and
 write drafts into local markdown files for review.
+
+### 13. Google Drive export
+
+Google Drive export should happen after script generation and creator review.
+Zora can upload approved documents into a Drive folder such as
+`Zora/Streams/{session_id}/`.
+
+Exportable files:
+
+- Final or reviewed script drafts.
+- `video-ideas.md`.
+- `talking-points.md`.
+- `outline.md`.
+- Optional clip notes for editors.
+
+Implementation notes:
+
+- Use OAuth with a creator-owned Google account.
+- Store tokens outside the repository.
+- Keep Drive folder IDs in local config, not hard-coded prompts.
+- Record uploaded Drive file IDs in the session metadata.
+- Do not upload raw transcripts or private notes unless explicitly requested.
 
 ## First prototype contract
 

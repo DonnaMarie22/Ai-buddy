@@ -19,6 +19,9 @@ to have personality, and quiet enough that she does not talk over the show.
 - Zora can log a full 3-4 hour stream transcript for post-stream review.
 - After stream, Zora can compile the strongest talking points and draft YouTube
   scripts from the conversation.
+- Zora can upload reviewed script documents to a Google Drive workspace.
+- Zora can look up old transcripts and keep lightweight notes so future streams
+  remember important context without re-reading everything.
 - The avatar idles when not in use and can show simple reactions while speaking,
   listening, surprised, or thinking.
 
@@ -36,6 +39,9 @@ to have personality, and quiet enough that she does not talk over the show.
    processing.
 9. Generate highlight notes, talking points, and YouTube script drafts from the
    best segments.
+10. Upload approved script documents to Google Drive.
+11. Maintain a low-impact notes file for durable preferences, recurring topics,
+    open ideas, and useful facts from prior conversations.
 
 ## Suggested local stack
 
@@ -47,7 +53,8 @@ to have personality, and quiet enough that she does not talk over the show.
 | AI response | Hosted LLM API | Keep answers concise for stream pacing. |
 | Text-to-speech | ElevenLabs, Azure, or local TTS | Pick a voice that is distinct from the streamer. |
 | Orchestration | Small local Python or Node service | Owns wake phrase detection, prompts, context, state, avatar triggers, and post-stream jobs. |
-| Storage | Local files or SQLite | Stores timestamped transcripts, summaries, highlights, and script drafts. |
+| Storage | Local files or SQLite | Stores timestamped transcripts, summaries, highlights, script drafts, and compact memory notes. |
+| Cloud export | Google Drive API | Uploads reviewed scripts and content packages to a creator-owned Drive folder. |
 
 ## Design docs
 
@@ -55,6 +62,7 @@ to have personality, and quiet enough that she does not talk over the show.
 - [Stream setup checklist](docs/stream-setup.md)
 - [Personality and behavior guide](docs/personality.md)
 - [Stream-to-YouTube content pipeline](docs/content-pipeline.md)
+- [Memory, transcript archive, and Google Drive export](docs/memory-and-drive.md)
 
 ## Stream behavior principles
 
@@ -65,6 +73,10 @@ to have personality, and quiet enough that she does not talk over the show.
   repeat unless asked.
 - Treat full-stream logs as creator-owned source material that can be paused,
   reviewed, exported, or deleted.
+- Upload only approved script documents to Google Drive; never upload raw
+  transcripts automatically.
+- Keep long-term notes compact and editable so Zora remembers useful context
+  without building a giant hidden memory.
 - Prefer "I can look that up" or "I am not sure" over confident guesses.
 - Avoid reading private data, chat messages, or on-screen content unless that
   input source has been deliberately enabled.
@@ -95,3 +107,6 @@ produces:
 - The best talking points and quotable moments.
 - Topic clusters that could become separate videos or Shorts.
 - Draft YouTube scripts with hooks, structure, suggested clips, and titles.
+- A Drive export package for reviewed scripts and content planning documents.
+- Updates to a compact notes file with recurring topics, decisions, and ideas
+  worth remembering next time.

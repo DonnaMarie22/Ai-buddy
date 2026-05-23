@@ -12,6 +12,8 @@ Use this checklist to assemble the first on-stream version of Zora.
 - [ ] Visible indicator for whether background listening is active or paused.
 - [ ] Enough local disk space for timestamped transcript logs.
 - [ ] Clear naming convention for each stream session.
+- [ ] Local folder for Zora notes, transcripts, and script drafts.
+- [ ] Google Drive destination folder selected for approved script uploads.
 
 ## Avatar application
 
@@ -46,6 +48,7 @@ Alternatives:
 - [ ] Add push-to-talk as a backup for noisy stream moments.
 - [ ] Keep a short rolling transcript or summary of recent streamer context.
 - [ ] Save a timestamped full-stream transcript for post-stream review.
+- [ ] Keep or update a compact `zora-notes.md` file for durable context.
 - [ ] Confirm Zora does not answer until the wake phrase or manual trigger fires.
 - [ ] Print active questions and responses locally for debugging.
 - [ ] Send short responses to TTS.
@@ -62,6 +65,9 @@ Alternatives:
 - [ ] Zora does not answer without "hey Zora" or a manual trigger.
 - [ ] Zora does not repeat background rant context unless asked.
 - [ ] Full-stream logs can be paused, exported, or deleted.
+- [ ] Google Drive uploads require review/approval before raw transcripts are
+      included.
+- [ ] Long-term notes can be opened and edited manually.
 - [ ] Zora does not claim access to desktop, game, chat, or private data unless
       those inputs have been intentionally connected.
 - [ ] TTS volume is balanced against game, music, and streamer microphone.
@@ -89,4 +95,7 @@ After the broadcast ends:
 - [ ] Group related moments into YouTube video ideas.
 - [ ] Draft scripts for the strongest ideas.
 - [ ] Review every script manually before publishing.
+- [ ] Upload approved scripts and planning docs to Google Drive.
+- [ ] Store the Drive links in the session metadata.
+- [ ] Update `zora-notes.md` with durable decisions, recurring topics, and ideas.
 - [ ] Delete or archive raw transcripts according to the creator's preference.

@@ -9,7 +9,9 @@ and prepare YouTube scripts from the strongest sections.
 - Preserve the useful parts of long rants and live conversations.
 - Reduce the work needed to find upload-worthy moments after stream.
 - Turn scattered thoughts into structured video ideas.
-- Keep the creator in control of what is saved, reviewed, and published.
+- Keep the creator in control of what is saved, reviewed, uploaded, and
+  published.
+- Upload reviewed script documents to Google Drive for editing and sharing.
 
 ## Session capture
 
@@ -134,6 +136,49 @@ For each stream session, Zora can write:
 - `video-ideas.md`: grouped YouTube concepts.
 - `scripts/*.md`: draft scripts for selected ideas.
 - `shorts.md`: short-form clip candidates.
+- `drive-export.json`: Google Drive upload results for approved documents.
+
+## Transcript lookup across old streams
+
+Zora can use previous streams as a research archive for new scripts and future
+conversations.
+
+Lookup flow:
+
+1. Search session summaries and tags for relevant old topics.
+2. Read the matching timestamped transcript segments.
+3. Pull quotes or talking points with source timestamps.
+4. Update the new script draft with references to the old material.
+5. Add durable lessons or preferences to the compact notes file only when useful.
+
+This avoids loading every old transcript into memory while still making past
+conversations useful.
+
+## Google Drive upload
+
+After review, Zora should upload script documents to a creator-owned Google Drive
+folder.
+
+Suggested folder layout:
+
+```text
+Zora/
+  Streams/
+    2026-05-23-stream-001/
+      outline.md
+      talking-points.md
+      video-ideas.md
+      scripts/
+        zora-origin-story.md
+        stream-rant-highlight.md
+```
+
+Upload rules:
+
+- Upload reviewed scripts and planning docs by default.
+- Do not upload raw transcripts unless the creator asks.
+- Keep a local record of Drive links and file IDs.
+- If a Drive upload fails, keep local files and show a retryable error.
 
 ## Privacy and control
 
@@ -145,6 +190,8 @@ Long-form logging is powerful, so it needs explicit controls:
 - Avoid storing raw audio unless explicitly enabled.
 - Do not publish or upload drafts automatically.
 - Require manual review before a script is used.
+- Require explicit approval before uploading raw transcripts or long-term notes.
+- Allow old session lookup to be disabled for sensitive streams.
 
 ## Example post-stream request
 
