@@ -219,3 +219,18 @@ Handoff rules:
 - Make automation status should be saved back into the session or series folder.
 - Failed automation attempts should remain retryable without regenerating the
   script.
+
+
+## End-of-stream video planning workflow
+
+At the end of a stream, Zora should help compile topics into video work:
+
+1. Close the stream session and confirm logging is complete.
+2. If transcript chunks are missing, offer to extract a transcript from the
+   downloaded stream video in the memory bank.
+3. Compile topics by theme, strength, and video potential.
+4. Group topics into videos, Shorts, information pages, or archive-only notes.
+5. Draft scripts and source notes for approved video topics.
+6. Queue approved scripts or information pages for Make handoff.
+7. Save schedule metadata and upload status back to the memory bank.
+8. Archive completed series when the workflow is finished.

@@ -1,6 +1,6 @@
 # Memory, Transcript Archive, and Google Drive Export
 
-Zora needs a creator-selected memory bank plus two kinds of memory:
+Zora needs a creator-selected memory bank drive/folder plus two kinds of memory:
 
 1. Heavy source material: full stream transcripts, summaries, highlights, and
    scripts.
@@ -14,8 +14,9 @@ them easy to open, export, archive, or delete.
 ## Lightweight notes file
 
 During install, Zora should ask which drive or folder should hold her memory
-bank. Use a plain markdown file such as `zora-notes.md` inside that memory bank
-for durable context.
+bank. This drive is Zora's local home base. Use lightweight transcripts,
+summaries, and a plain markdown file such as `zora-notes.md` inside that memory
+bank for active durable context.
 
 Recommended sections:
 
@@ -60,6 +61,8 @@ folder structure is enough for the first version:
 zora-memory-bank/
   settings.json
   zora-notes.md
+  lightweight-transcripts/
+  downloaded-streams/
   sessions/
     2026-05-23-stream-001/
       transcript.jsonl
@@ -71,6 +74,8 @@ zora-memory-bank/
       make-export.json
       drive-export.json
   archives/
+    2026-05/
+      topic-name/
     completed-series/
 ```
 
@@ -163,3 +168,66 @@ Archive metadata should include:
 - Drive links.
 - Make automation IDs or upload references when available.
 - Notes on whether the series can be reused as future context.
+
+
+## Outbound-only drive model
+
+Zora's memory bank should not be exposed as a server or shared folder that the
+internet can reach. The recommended model is outbound-only:
+
+- Zora reads and writes local files on the memory bank drive.
+- Zora reaches out to approved services when needed.
+- No external service receives direct inbound access to the drive.
+- Make and Drive receive approved export packages, not drive access.
+- Firewall rules should block unsolicited inbound traffic to the Zora app.
+
+## Keys and tokens
+
+It is tempting to place all keys and tokens in Zora's drive, but raw secrets in a
+plain folder are risky. Better options:
+
+1. Store secrets in the operating system credential vault.
+2. Store non-secret provider settings in `settings.json`.
+3. If secrets must travel with the memory bank, store them in an encrypted vault
+   that requires a passphrase or OS unlock.
+4. Never include secrets in transcripts, notes, Make packages, or Drive exports.
+
+## Lightweight memory and heavy archive policy
+
+Lightweight transcripts should serve as Zora's memory. Heavy information should
+be archived after 3 months.
+
+Active memory:
+
+- `zora-notes.md`.
+- Lightweight transcripts.
+- Session summaries.
+- Talking point summaries.
+- Source notes.
+
+Heavy archive after 3 months:
+
+- Downloaded stream videos.
+- Raw or large transcript exports.
+- Old generated media assets.
+- Completed series production folders.
+
+Archive organization:
+
+```text
+archives/
+  2026-05/
+    zora-build-series/
+    spirituality-human-patterns/
+  2026-06/
+    quantum-and-consciousness/
+```
+
+Archived material should remain searchable by summaries and tags, but should not
+clutter active dashboards.
+
+## Video backup transcript fallback
+
+Downloaded stream videos can live in the memory bank. If a lightweight transcript
+is missing or corrupted, Zora can extract or regenerate a transcript from the
+saved video as a recovery path.

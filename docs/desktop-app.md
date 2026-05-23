@@ -47,8 +47,8 @@ First-run setup should ask for:
 6. LLM/STT/TTS provider configuration.
 7. Optional web research provider or browser/search API.
 8. Optional Google Drive authorization.
-9. Memory bank drive/folder location for notes, transcripts, archives, sources,
-   scripts, and automation exports.
+9. Memory bank drive/folder location for lightweight transcripts, downloaded
+   stream videos, notes, archives, sources, scripts, and automation exports.
 10. Whether Zora should start with Windows.
 
 ## Background and tray mode
@@ -61,8 +61,9 @@ Expected behavior:
   muted.
 - Right-click menu exposes quick actions: rest, awaken, mute, stop speaking,
   start/stop session log, open notes, open settings, quit.
-- Desktop window can show transcripts, logs, session status, Drive uploads,
-  Make automation exports, archived series, and script drafts.
+- Desktop window can show transcripts, logs, logging state, session status,
+  Drive uploads, Make automation exports, archived series, errors, and script
+  drafts.
 - Closing the window can minimize to tray if background mode is enabled.
 
 ## Visual theme
@@ -88,6 +89,9 @@ during install:
 zora-memory-bank/
   settings.json
   zora-notes.md
+  lightweight-transcripts/
+  downloaded-streams/
+    2026-05-23-stream-001.mp4
   logs/
     app.log
   sessions/
@@ -100,6 +104,9 @@ zora-memory-bank/
       make-export.json
       drive-export.json
   archives/
+    2026-05/
+      spirituality-and-patterns/
+      zora-build-series/
     completed-series/
   make/
     outgoing/
@@ -326,3 +333,54 @@ Export package contents:
 
 Zora should not auto-submit rough drafts to Make. The creator should approve a
 script or information page before it enters the automation queue.
+
+
+## Protected memory bank drive
+
+Zora's memory bank should live on a drive/folder chosen during install. The app
+should treat that location as Zora's home base.
+
+Security posture:
+
+- No inbound network server is required for the memory bank.
+- Zora may make outbound requests to approved services.
+- Outside services should not be able to reach into the memory bank drive.
+- Use local firewall rules to block unsolicited inbound traffic to Zora.
+- Store raw keys/tokens in the OS credential vault when possible.
+- If portable secrets are required, use an encrypted secrets vault in the memory
+  bank rather than plain text files.
+
+## Retention and archive policy
+
+Lightweight transcripts and summaries are Zora's active memory. Heavy files should
+move out of active work after 3 months.
+
+Policy:
+
+- Keep lightweight transcripts, summaries, and `zora-notes.md` active.
+- Keep downloaded stream videos in the memory bank as a recovery source.
+- After 3 months, archive heavy files by `YYYY-MM/topic-name/` folders.
+- Keep archived folders searchable by summary and tags.
+- Do not delete heavy archives automatically unless the creator enables deletion.
+
+## Failure alerts
+
+Critical failures should appear in the desktop hub and be spoken by Zora when it
+is safe to do so.
+
+Critical live alert phrase:
+
+```text
+Hey listen, we have a problem somewhere. Pause the stream.
+```
+
+The hub should show:
+
+- OBS not streaming or not recording when expected.
+- Warudo disconnected or missing triggers.
+- Internet unavailable.
+- Drive upload failure.
+- Make webhook failure.
+- TTS failure during stream.
+- STT/LLM provider failure.
+- Memory bank drive unavailable or low on space.

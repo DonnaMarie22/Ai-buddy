@@ -62,3 +62,22 @@ Archived series should keep:
 - Drive links.
 - Source notes.
 - Creator notes for future reference.
+
+
+## End-of-stream handoff
+
+After Zora compiles topics into video candidates, the creator can approve which
+items enter Make.
+
+Zora should prepare:
+
+- Approved script or information page.
+- Topic/category.
+- Series name.
+- Publish schedule metadata.
+- Source notes and timestamps.
+- Drive links if available.
+- Local memory bank paths.
+
+Make should never receive direct access to Zora's memory bank drive. It should
+receive only the approved package by webhook or watched export folder.

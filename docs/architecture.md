@@ -11,8 +11,8 @@ stream risk, and replaceable services.
 ```text
 Zora downloadable desktop app
   -> installs on the streaming PC
-  -> owns listening, memory bank, research, scripts, Make export, Drive export,
-     and state
+  -> owns listening, protected memory bank, research, scripts, Make export,
+     Drive export, logging state, errors, and state
   -> drives Warudo as the visible helpful fairy face/avatar rig
   -> exposes audio and visual sources to OBS
 
@@ -68,7 +68,7 @@ Desktop app responsibilities:
 - First-run setup wizard for microphone, hotkeys, Warudo, OBS, API keys, Drive,
   Make automation, and memory bank drive/folder location.
 - System tray/background mode.
-- Local settings and logs.
+- Local settings, logs, provider settings, logging state, and error state.
 - Start/stop controls for listening, logging, TTS, and post-stream jobs.
 - Update path for new releases.
 
@@ -391,3 +391,18 @@ during long streams:
 Reliability rule: a 3-4 hour stream should not depend on one in-memory transcript
 buffer. Zora should write small timestamped chunks as she goes and recover an
 unfinished session on the next launch.
+
+
+## Protected drive network model
+
+Zora's memory bank drive should be local-first and outbound-only. The app may
+call approved internet services, but nothing should be able to initiate inbound
+access to the memory bank.
+
+Recommended controls:
+
+- No public web server for the memory bank.
+- No direct Make or Drive access to local folders.
+- Firewall blocks unsolicited inbound traffic.
+- Secrets live in the OS credential vault or encrypted vault.
+- Exports are explicit packages, not shared-drive access.

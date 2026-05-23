@@ -17,7 +17,7 @@ show.
 - Zora installs as her own desktop app on the streaming PC.
 - Zora can run in the background or system tray while streaming.
 - Zora's desktop hub uses a dark blue and pinky-purple visual theme for her
-  controls, settings, memory, scripts, and integrations.
+  controls, settings, memory, scripts, logging state, errors, and integrations.
 - A Warudo-powered avatar appears in the top-right of the stream layout. The
   first model can be a human avatar, while Zora's triggers and behavior carry the
   practical-fairy identity until the visual model is updated.
@@ -38,6 +38,9 @@ show.
 - Zora can upload reviewed script documents to a Google Drive workspace.
 - Zora can hand approved scripts or information pages to Make workflows that turn
   them into videos and schedule uploads.
+- Zora's memory bank should live on a creator-selected drive with no inbound
+  internet access; the app may reach out to approved services, but outside
+  services should not be able to reach into the drive.
 - Zora can look up old transcripts and keep lightweight notes so future streams
   remember important context without re-reading everything.
 - Zora is prepared to discuss spirituality, history, human beings, the body,
@@ -72,12 +75,20 @@ show.
     information.
 15. Ask during install where to store Zora's memory bank, including a specific
     drive or folder chosen by the creator.
-16. Maintain a low-impact notes file for durable preferences, recurring topics,
+16. Keep lightweight transcripts and summaries as Zora's active memory.
+17. Archive heavy files after 3 months into month/topic folders.
+18. Store downloaded stream videos in the memory bank so transcripts can be
+    recovered from video if needed.
+19. Maintain a low-impact notes file for durable preferences, recurring topics,
     open ideas, and useful facts from prior conversations.
-17. Provide a dark blue and pinky-purple desktop hub for status, settings,
-    transcripts, notes, scripts, and integrations.
-18. Archive old completed content series so active work stays clean.
-19. Include privacy controls, crash recovery, source notes, update handling,
+20. Provide a dark blue and pinky-purple desktop hub for status, settings,
+    logging state, errors, transcripts, notes, scripts, and integrations.
+21. Warn in the hub when OBS is not streaming/recording, Warudo is unavailable,
+    internet is down, Drive upload fails, Make webhook fails, or TTS fails.
+22. Have Zora speak a live warning for critical failures: "Hey listen, we have a
+    problem somewhere. Pause the stream."
+23. Archive old completed content series so active work stays clean.
+24. Include privacy controls, crash recovery, source notes, update handling,
     panic mode, integration plugins, Make video workflow support, and personality
     tuning.
 
@@ -101,6 +112,8 @@ show.
 - [Architecture](docs/architecture.md)
 - [Downloadable desktop app](docs/desktop-app.md)
 - [Complete app requirements](docs/app-requirements.md)
+- [Protected drive and security model](docs/protected-drive-security.md)
+- [Provider settings](docs/provider-settings.md)
 - [Visual design](docs/visual-design.md)
 - [Stream setup checklist](docs/stream-setup.md)
 - [Personality and behavior guide](docs/personality.md)
@@ -195,5 +208,11 @@ for listening state, Warudo triggers, OBS status, memory, scripts, sources, Driv
 exports, Make automations, and personality settings.
 
 During install, Zora should ask where to store her memory bank. The creator can
-choose a specific drive or folder, and Zora should keep transcripts, notes,
-archives, scripts, source metadata, and Make export packages under that location.
+choose a specific drive or folder, and Zora should keep lightweight transcripts,
+notes, downloaded stream videos, archives, scripts, source metadata, and Make
+export packages under that location.
+
+Zora's best security model is outbound-only: she can reach approved services like
+STT, LLM, TTS, web search, Drive, and Make, but the memory bank drive should not
+expose inbound network access. Secrets should use the operating system credential
+vault or an encrypted vault, not plain text files.

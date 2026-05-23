@@ -13,8 +13,8 @@ Zora desktop app.
 - [ ] Visible indicator for whether background listening is active or paused.
 - [ ] Enough local disk space for timestamped transcript logs.
 - [ ] Clear naming convention for each stream session.
-- [ ] Specific drive/folder chosen for Zora's memory bank, notes, transcripts,
-      archives, and script drafts.
+- [ ] Specific drive/folder chosen for Zora's protected memory bank, lightweight
+      transcripts, downloaded stream videos, archives, and script drafts.
 - [ ] Internet lookup provider or browser/search API selected if web research is
       enabled.
 - [ ] Google Drive destination folder selected for approved script uploads.
@@ -154,6 +154,10 @@ Before using Zora in a real stream, confirm:
 - [ ] Setup wizard has been completed.
 - [ ] Microphone, TTS output, OBS audio, and Warudo lip sync tests pass.
 - [ ] Warudo and OBS connection statuses are visible.
+- [ ] OBS warning appears if OBS is not streaming or recording/video mode when
+      expected.
+- [ ] Warudo warning appears if Warudo is closed or missing triggers.
+- [ ] Internet, Drive, Make, TTS, and memory bank errors appear in the hub.
 - [ ] Hotkeys work even when Zora is in the background.
 - [ ] "Zora rest" pauses listening/logging and shows sleeping animation if OBS is
       streaming.
@@ -162,6 +166,7 @@ Before using Zora in a real stream, confirm:
 - [ ] Transcript chunks autosave during a test session.
 - [ ] Unfinished sessions can be recovered after restart.
 - [ ] Source notes are saved when web lookup is used.
+- [ ] Zora can speak the critical warning phrase when a live failure occurs.
 - [ ] Drive upload is disabled unless explicitly approved.
 - [ ] Personality settings are visible and editable.
 
@@ -180,3 +185,15 @@ Even while the MVP uses a human avatar, configure the full Zora trigger set:
 - [ ] Muted.
 - [ ] Panic/emergency stop.
 - [ ] OBS-live sleeping loop.
+
+
+## End-of-stream video workflow checklist
+
+- [ ] Download or save the stream video into Zora's memory bank.
+- [ ] Confirm lightweight transcript chunks are complete.
+- [ ] If transcript chunks are incomplete, test transcript recovery from the video.
+- [ ] Compile topics into video candidates.
+- [ ] Approve scripts or information pages for Make.
+- [ ] Send approved packages to Make by webhook or export folder.
+- [ ] Save Make run IDs, schedule metadata, and output links.
+- [ ] Archive completed series into month/topic folders.

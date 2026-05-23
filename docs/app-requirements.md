@@ -22,7 +22,8 @@ Zora needs these major systems:
 
 Required screens:
 
-- Home/status dashboard in a dark blue and pinky-purple hub theme.
+- Home/status dashboard in a dark blue and pinky-purple hub theme, including
+  logging state and critical error state.
 - Live transcript and rolling context.
 - Stream sessions archive.
 - Notes editor for `zora-notes.md`.
@@ -37,12 +38,16 @@ Status indicators should show:
 
 - Zora state: idle, listening, resting, sleeping, thinking, speaking, muted, or
   panic.
-- OBS status: disconnected, connected, streaming, not streaming.
+- OBS status: disconnected, connected, streaming, recording/video mode, not
+  streaming/recording, warning.
 - Warudo status: disconnected, connected, current avatar expression/state,
   including hover, sleep, awake, listening, speaking, muted, and panic triggers.
 - Session status: not logging, logging, paused, recovering, processing.
 - Drive status: disabled, authorized, uploading, uploaded, error.
+- Make status: disabled, webhook ready, sending, accepted, failed.
 - Web research status: disabled, enabled, lookup in progress, source saved.
+- Internet status: online, degraded, offline.
+- TTS status: ready, speaking, failed.
 
 ## 2. First-run setup wizard
 
@@ -222,3 +227,58 @@ The first downloadable MVP is complete when Zora can:
 - Show all configured integrations and their statuses.
 - Prepare approved script or information-page packages for Make video workflows.
 - Archive completed series while keeping them searchable.
+
+
+## Protected memory bank and retention
+
+Zora's memory bank should be selected during install and treated as her local
+home. The app should use an outbound-only network posture: Zora can reach out to
+approved services, but external services cannot reach into the drive.
+
+Requirements:
+
+- Ask for the memory bank drive/folder during install.
+- Store lightweight transcripts and summaries as active memory.
+- Store downloaded stream videos in the memory bank as transcript recovery
+  backups.
+- Archive heavy files after 3 months into `YYYY-MM/topic-name/` folders.
+- Keep archived summaries searchable.
+- Store secrets in the OS credential vault or encrypted vault, not plain text.
+
+## Provider settings explained
+
+Provider settings are the services Zora connects to. They should be editable so
+Zora is not locked into one vendor.
+
+Examples:
+
+- STT provider: turns voice into text.
+- LLM provider: generates Zora's answers and scripts.
+- TTS provider: turns Zora's text into voice.
+- Web research provider: searches or browses the internet.
+- Google Drive provider: uploads approved documents.
+- Make provider: sends approved video packages to Make.
+- OBS provider: reads streaming/recording status and controls scenes if allowed.
+- Warudo provider: sends expression and state triggers.
+
+## Live failure handling
+
+When critical systems fail during stream, Zora should both display the error in
+the hub and speak a short warning if TTS is still available:
+
+```text
+Hey listen, we have a problem somewhere. Pause the stream.
+```
+
+Critical failures:
+
+- OBS is not streaming or recording when expected.
+- Warudo is disconnected or missing required triggers.
+- Internet is down.
+- Drive upload fails.
+- Make webhook fails.
+- TTS fails mid-stream.
+- Memory bank drive is unavailable or low on space.
+
+The hub should show the raw error, friendly explanation, likely impact, and next
+recommended action.
