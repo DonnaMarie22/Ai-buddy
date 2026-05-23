@@ -129,7 +129,7 @@ respond to what you say to me."
 | Waiting for a command | Calm idle pose. |
 | Background context active | Subtle listening indicator. |
 | "Hey Zora" heard | Attentive listening pose. |
-| "Zora rest" heard | Resting, sleeping, or dimmed expression. |
+| "Zora rest" heard | Resting, sleeping, or dimmed expression. If OBS is live, use a visible sleeping loop. |
 | "Zora awaken" heard | Wake-up transition back to listening or idle. |
 | Generating a reply | Thinking animation or loading effect. |
 | Speaking | Talking animation with lip sync. |

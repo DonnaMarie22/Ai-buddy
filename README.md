@@ -18,6 +18,8 @@ to have personality, and quiet enough that she does not talk over the show.
   Warudo 3D avatar rig.
 - "Zora rest" pauses background listening/logging.
 - "Zora awaken" resumes background listening/logging.
+- If OBS is live while Zora is asleep, Warudo should keep her visible with a
+  sleeping animation so viewers know she is intentionally resting.
 - A hotkey can also force listen, pause, mute, or stop as a reliable manual
   backup during live streams.
 - Zora can log a full 3-4 hour stream transcript for post-stream review.
@@ -41,8 +43,8 @@ to have personality, and quiet enough that she does not talk over the show.
 6. Send the request to an LLM with a short Zora persona prompt.
 7. Generate a short spoken answer with TTS.
 8. Route the audio to OBS and Warudo.
-9. Trigger Warudo expressions for idle, listening, resting, thinking, and
-   speaking.
+9. Trigger Warudo expressions for idle, listening, resting/sleeping, thinking,
+   and speaking.
 10. Save the long-form stream transcript with timestamps for post-stream content
     processing.
 11. Generate highlight notes, talking points, and YouTube script drafts from the
@@ -79,6 +81,8 @@ to have personality, and quiet enough that she does not talk over the show.
   command.
 - Treat "Zora rest" as an immediate pause for listening/logging and "Zora
   awaken" as the command to resume listening/logging.
+- When OBS is actively streaming and Zora is resting, show a sleeping animation
+  instead of removing her from the scene.
 - Treat background rant context as private working memory, not public content to
   repeat unless asked.
 - Treat full-stream logs as creator-owned source material that can be paused,

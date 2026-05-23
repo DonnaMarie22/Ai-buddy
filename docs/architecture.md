@@ -49,6 +49,8 @@ Recommended MVP behavior:
 - Do not speak until the wake phrase is detected.
 - Pause listening/logging immediately when "Zora rest" is heard.
 - Resume listening/logging when "Zora awaken" is heard.
+- If OBS is streaming while Zora is resting, keep the Warudo avatar visible in a
+  sleeping animation as a visual cue.
 - Provide an obvious mute/pause control for live-stream safety.
 
 ### 2. Control phrase and wake phrase gate
@@ -203,7 +205,7 @@ Minimum states:
 | --- | --- |
 | `idle` | Idle animation, occasional blink or subtle motion. |
 | `listening` | Attentive expression or small "recording" animation. |
-| `resting` | Sleeping, dimmed, powered-down, or relaxed pose after "Zora rest". |
+| `resting` | Sleeping, dimmed, powered-down, or relaxed pose after "Zora rest". If OBS is live, prefer a visible sleeping loop. |
 | `thinking` | Processing expression, loading animation, or eye movement. |
 | `speaking` | Talk animation and lip sync from TTS audio. |
 | `muted` | Silent pose for hard mute or emergency stop. |
@@ -215,7 +217,8 @@ Zora's state changes to Warudo triggers, including a distinct resting pose for
 
 ### 11. OBS integration
 
-OBS composes the final stream.
+OBS composes the final stream. Zora should be aware of whether OBS is currently
+streaming so her visual state can communicate what is happening.
 
 Recommended sources:
 
@@ -224,6 +227,15 @@ Recommended sources:
 - Optional caption/subtitle browser source for Zora's response.
 
 Keep Zora in a separate OBS scene group so she can be hidden instantly.
+
+OBS-aware state rule:
+
+- If OBS is streaming and Zora is `resting`, keep the Warudo source visible and
+  play a sleeping animation.
+- If OBS is not streaming and Zora is `resting`, the local controller may keep
+  her hidden, dimmed, or asleep depending on the creator's preference.
+- A hard `muted` or emergency-stop state can still hide or silence Zora even
+  during a live stream.
 
 ### 12. Post-stream content pipeline
 

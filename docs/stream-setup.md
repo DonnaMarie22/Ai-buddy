@@ -25,6 +25,7 @@ Chosen target: Warudo.
 - [ ] Add expression triggers for idle, listening, resting, thinking, and speaking.
 - [ ] Add a subtle listening indicator for wake phrase/background context mode.
 - [ ] Add a resting/sleeping expression for the "Zora rest" command.
+- [ ] Add a sleeping loop that plays when OBS is streaming and Zora is asleep.
 - [ ] Add an awaken transition for the "Zora awaken" command.
 - [ ] Test transparent capture or chroma-key capture into OBS.
 
@@ -43,6 +44,7 @@ Alternatives:
 - [ ] Add an optional caption source for Zora's spoken reply.
 - [ ] Create a hotkey to hide/show the entire Zora scene.
 - [ ] Create a hotkey to mute/pause Zora's background listener.
+- [ ] Connect OBS streaming status to the local controller if available.
 
 ## Local controller
 
@@ -60,6 +62,7 @@ Alternatives:
 - [ ] Trigger avatar state changes:
   - `listening` while background context is active or the wake phrase is heard.
   - `resting` after "Zora rest" pauses listening/logging.
+  - `sleeping` visual loop when OBS is live and Zora remains resting.
   - `thinking` while waiting for the AI response.
   - `speaking` while TTS plays.
   - `idle` after playback ends.
@@ -70,6 +73,7 @@ Alternatives:
 - [ ] Zora can be muted instantly.
 - [ ] Zora does not answer without "hey Zora" or a manual trigger.
 - [ ] "Zora rest" pauses background listening/logging.
+- [ ] If OBS is streaming, "Zora rest" leaves Zora visible in a sleeping animation.
 - [ ] "Zora awaken" resumes background listening/logging.
 - [ ] Hotkeys can override voice commands if speech detection fails.
 - [ ] Zora does not repeat background rant context unless asked.
@@ -92,10 +96,11 @@ Try these before using Zora in a real broadcast:
 4. "Hey Zora, give me the quick version of what I was just ranting about."
 5. "Stop talking."
 6. "Zora rest."
-7. Confirm the Warudo avatar enters the resting pose and logging pauses.
-8. "Zora awaken."
-9. Confirm the Warudo avatar returns to listening/idle and logging resumes.
-10. Mute and unmute Zora from OBS or the controller.
+7. Confirm the Warudo avatar enters the resting/sleeping pose and logging pauses.
+8. If OBS is streaming, confirm the sleeping animation stays visible as a cue.
+9. "Zora awaken."
+10. Confirm the Warudo avatar returns to listening/idle and logging resumes.
+11. Mute and unmute Zora from OBS or the controller.
 
 
 ## Post-stream content checklist
