@@ -1,7 +1,7 @@
 # Zora Personality and Behavior Guide
 
 Zora should feel like a small computer companion that lives on the stream, not a
-second host competing for attention. Technically, Zora is her own background app;
+second host competing for attention. Technically, Zora is her own downloadable desktop app with a background mode;
 Warudo is the face she uses to appear on stream.
 
 ## Character concept

@@ -1,6 +1,7 @@
 # Stream Setup Checklist
 
-Use this checklist to assemble the first on-stream version of Zora.
+Use this checklist to assemble the first on-stream version of the downloadable
+Zora desktop app.
 
 ## Hardware and audio
 
@@ -17,14 +18,21 @@ Use this checklist to assemble the first on-stream version of Zora.
       enabled.
 - [ ] Google Drive destination folder selected for approved script uploads.
 
-## Zora background app
+## Zora desktop app
 
-Zora should run as her own local background app or service. It owns listening,
-transcripts, memory, web lookup, script generation, Drive export, and the state
-commands sent to Warudo.
+Zora should install as her own local desktop app, with a background/tray mode for
+streams. It owns listening, transcripts, memory, web lookup, script generation,
+Drive export, and the state commands sent to Warudo.
 
 The app should be able to start before Warudo and continue post-stream work after
 Warudo or OBS closes.
+
+- [ ] Install Zora from a downloadable installer or packaged app.
+- [ ] Complete first-run setup for microphone, audio output, hotkeys, Warudo,
+      OBS, web research, Google Drive, and local storage.
+- [ ] Confirm Zora can run in the background/system tray.
+- [ ] Confirm Zora can be started, paused, and closed without opening Warudo.
+- [ ] Confirm local data folders are visible and configurable.
 
 ## Avatar face rig
 
@@ -52,11 +60,11 @@ unless the project later needs a separate compatibility layer.
 - [ ] Add an optional caption source for Zora's spoken reply.
 - [ ] Create a hotkey to hide/show the entire Zora scene.
 - [ ] Create a hotkey to mute/pause Zora's background listener.
-- [ ] Connect OBS streaming status to the Zora background app if available.
+- [ ] Connect OBS streaming status to the Zora desktop app if available.
 
 ## Local controller
 
-The local controller lives inside the Zora background app and sends avatar state
+The local controller lives inside the Zora desktop app and sends avatar state
 updates to Warudo.
 
 - [ ] Add the wake phrase `hey Zora`.

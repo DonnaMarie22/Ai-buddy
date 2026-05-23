@@ -8,7 +8,8 @@ Zora needs two kinds of memory:
    for Zora to remember next time.
 
 This keeps live performance low-impact while still making old conversations
-useful.
+useful. The downloadable Zora desktop app should own these local files and make
+them easy to open, export, archive, or delete.
 
 ## Lightweight notes file
 
@@ -55,6 +56,7 @@ folder structure is enough for the first version:
 
 ```text
 zora-data/
+  settings.json
   zora-notes.md
   sessions/
     2026-05-23-stream-001/

@@ -1,15 +1,16 @@
 # Zora Architecture
 
-This document describes the first practical architecture for Zora, a standalone
-background app that can follow the streamer's recent rant and respond only when
-addressed. Warudo is the face/avatar rig Zora drives for visual presence; it is
+This document describes the first practical architecture for Zora, a
+downloadable standalone desktop app that can run in the background, follow the
+streamer's recent rant, and respond only when addressed. Warudo is the face/avatar rig Zora drives for visual presence; it is
 not the application brain. The architecture favors clear local control, low
 stream risk, and replaceable services.
 
 ## High-level flow
 
 ```text
-Zora background app
+Zora downloadable desktop app
+  -> installs on the streaming PC
   -> owns listening, memory, research, scripts, Drive export, and state
   -> drives Warudo as the visible face/avatar rig
   -> exposes audio and visual sources to OBS
@@ -42,14 +43,32 @@ Post-stream transcript
 
 ## Application boundary
 
-Zora should be built as her own local background app or service. Warudo should be
-treated as the visual layer: Zora sends state changes, expression triggers, and
-TTS audio to Warudo, while Zora itself owns listening, wake/control commands,
-transcripts, memory, web lookup, script generation, and Google Drive export.
+Zora should be built as her own local downloadable desktop app, with a
+background service/tray mode for streams. Warudo should be treated as the visual
+layer: Zora sends state changes, expression triggers, and TTS audio to Warudo,
+while Zora itself owns listening, wake/control commands, transcripts, memory, web
+lookup, script generation, and Google Drive export.
 
 This separation matters because Zora should still be able to log transcripts,
 prepare scripts, search archives, or upload approved documents even when the
-Warudo scene is not currently visible.
+Warudo scene is not currently visible. The installable app should also own local
+settings, integrations, logs, and data storage.
+
+## Distribution model
+
+The MVP should target a Windows-first downloadable app because the intended
+streaming setup depends on OBS and Warudo. The app can later add macOS or Linux
+support if the avatar and audio integrations make sense there.
+
+Desktop app responsibilities:
+
+- Installer or packaged executable.
+- First-run setup wizard for microphone, hotkeys, Warudo, OBS, API keys, Drive,
+  and storage location.
+- System tray/background mode.
+- Local settings and logs.
+- Start/stop controls for listening, logging, TTS, and post-stream jobs.
+- Update path for new releases.
 
 ## Components
 

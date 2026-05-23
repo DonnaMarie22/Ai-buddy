@@ -1,8 +1,9 @@
 # Zora AI Buddy
 
-Zora is a standalone background app that powers a small 3D character on
-stream. The app listens while you talk, answers questions as an in-world computer
-sidekick, and uses Warudo as her visible face/avatar rig.
+Zora is a downloadable desktop app that runs in the background on your
+computer and powers a small 3D character on stream. The app listens while you
+talk, answers questions as an in-world computer sidekick, and uses Warudo as her
+visible face/avatar rig.
 
 The goal is not to replace the streamer. Zora should feel like a responsive
 co-host in the corner of the screen: useful for quick questions, playful enough
@@ -10,7 +11,8 @@ to have personality, and quiet enough that she does not talk over the show.
 
 ## Core experience
 
-- Zora runs as her own background app on the streaming PC.
+- Zora installs as her own desktop app on the streaming PC.
+- Zora can run in the background or system tray while streaming.
 - A small Warudo-powered 3D avatar appears in the top-right of the stream layout.
 - Zora listens in the background so she can understand the recent rant or topic.
 - The streamer can ask natural voice questions during a broadcast with "hey
@@ -39,33 +41,34 @@ to have personality, and quiet enough that she does not talk over the show.
 
 ## MVP scope
 
-1. Keep a short local rolling transcript or summary of the streamer's recent
+1. Ship as a downloadable desktop app with an installer and first-run setup.
+2. Keep a short local rolling transcript or summary of the streamer's recent
    rant/context.
-2. Support hotkeys for manual listen, pause, mute, and stop controls.
-3. Detect control phrases: "Zora rest" to pause listening and "Zora awaken"
+3. Support hotkeys for manual listen, pause, mute, and stop controls.
+4. Detect control phrases: "Zora rest" to pause listening and "Zora awaken"
    to resume listening.
-4. Detect the wake phrase "hey Zora" before answering questions.
-5. Transcribe the streamer's question and attach the recent context.
-6. Send the request to an LLM with a short Zora persona prompt.
-7. Generate a short spoken answer with TTS.
-8. Route the audio to OBS and Warudo.
-9. Trigger Warudo expressions for idle, listening, resting/sleeping, thinking,
-   and speaking.
-10. Save the long-form stream transcript with timestamps for post-stream content
+5. Detect the wake phrase "hey Zora" before answering questions.
+6. Transcribe the streamer's question and attach the recent context.
+7. Send the request to an LLM with a short Zora persona prompt.
+8. Generate a short spoken answer with TTS.
+9. Route the audio to OBS and Warudo.
+10. Trigger Warudo expressions for idle, listening, resting/sleeping, thinking,
+    and speaking.
+11. Save the long-form stream transcript with timestamps for post-stream content
     processing.
-11. Generate highlight notes, talking points, and YouTube script drafts from the
+12. Generate highlight notes, talking points, and YouTube script drafts from the
     best segments.
-12. Upload approved script documents to Google Drive.
-13. Look up internet sources when the answer needs current or verifiable
+13. Upload approved script documents to Google Drive.
+14. Look up internet sources when the answer needs current or verifiable
     information.
-14. Maintain a low-impact notes file for durable preferences, recurring topics,
+15. Maintain a low-impact notes file for durable preferences, recurring topics,
     open ideas, and useful facts from prior conversations.
 
 ## Suggested local stack
 
 | Layer | Recommended first choice | Notes |
 | --- | --- | --- |
-| Zora background app | Local desktop app/service | Owns listening, wake phrases, memory, web research, scripts, Drive export, and state. |
+| Zora desktop app | Downloadable Windows-first desktop app | Owns listening, wake phrases, memory, web research, scripts, Drive export, and state. |
 | Face/avatar rig | Warudo | Chosen platform for Zora's visible 3D face, scene workflow, and expression triggers. |
 | Capture/compositing | OBS | Captures the Warudo avatar and Zora audio as stream sources. |
 | Speech-to-text | Whisper or a hosted STT API | Start hosted for simplicity; move local later if latency is good. |
@@ -79,6 +82,7 @@ to have personality, and quiet enough that she does not talk over the show.
 ## Design docs
 
 - [Architecture](docs/architecture.md)
+- [Downloadable desktop app](docs/desktop-app.md)
 - [Stream setup checklist](docs/stream-setup.md)
 - [Personality and behavior guide](docs/personality.md)
 - [Stream-to-YouTube content pipeline](docs/content-pipeline.md)
@@ -115,11 +119,11 @@ to have personality, and quiet enough that she does not talk over the show.
 
 ## First build milestone
 
-The first useful prototype should run locally, keep a short private rolling
-context of what the streamer has been saying, answer only after "hey Zora", print
-transcripts and responses to the console, speak the response through TTS, expose
-a simple trigger that Warudo or OBS can react to, and save a timestamped stream
-log for later content review.
+The first useful prototype should run locally as a desktop app or packaged app
+shell, keep a short private rolling context of what the streamer has been saying,
+answer only after "hey Zora", print transcripts and responses to the app log,
+speak the response through TTS, expose a simple trigger that Warudo or OBS can
+react to, and save a timestamped stream log for later content review.
 
 Example prompts:
 
